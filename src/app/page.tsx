@@ -359,6 +359,46 @@ export default function Home() {
                         ></Image>
                       </div>
                       <div className="bg-white h-[calc(66.6%-16px)] p-4 flex justify-end flex-col gap-2">
+                        <div className="font-bold">공통 컴포넌트</div>
+                        <div className="text-sm text-apple-gray mt-[-8px]">
+                          2024.09.13 - 2024.09.15
+                        </div>
+                        <div className="text-sm">
+                          Headless UI 패턴을 사용하여 재사용 가능한 셀렉트
+                          박스를 구현했습니다.
+                        </div>
+                        <div>
+                          <ul className="flex gap-2 py-4">
+                            <li>
+                              <RiNextjsFill size={40}></RiNextjsFill>
+                            </li>
+                            <li>
+                              <BiLogoTypescript size={40}></BiLogoTypescript>
+                            </li>
+                            <li>
+                              <SiPrisma size={40} />
+                            </li>
+                            <li>
+                              <RiSupabaseLine size={40}></RiSupabaseLine>
+                            </li>
+                            <li>
+                              <RiTailwindCssFill size={40}></RiTailwindCssFill>
+                            </li>
+                            <li>Context Api</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </li>
+                    <li className="basis-[calc(33%-8px)] pb-4 shadow-lg rounded-md overflow-hidden bg-orange-L3 relative h-[500px] flex flex-col justify-end flex-1">
+                      <div className=" absolute  rounded-full overflow-hidden w-[200px] h-[200px] bg-white border-[6px] border-orange-L3 left-1/2 top-1/3 translate-x-[-50%] translate-y-[-50%]">
+                        <Image
+                          src={"/thform.webp"}
+                          alt="test"
+                          fill
+                          objectFit="cover"
+                        ></Image>
+                      </div>
+                      <div className="bg-white h-[calc(66.6%-16px)] p-4 flex justify-end flex-col gap-2">
                         <div className="font-bold">supatodo</div>
                         <div className="text-sm text-apple-gray mt-[-8px]">
                           2024.09.02 - 2024.09.10
