@@ -243,11 +243,20 @@ export default function Home() {
                         </p>
                       </li>
                     </ul>
-                    <ul className="flex gap-2 py-4 text-3xl">
-                      <li className="bg-orange-L2 w-[50px] h-[50px] bg-[url('/logos.png')] bg-no-repeat border-[6px] border-orange-L2 rounded-md box-content bg-[2px]"></li>
-                      <li className="bg-orange-L2 w-[50px] h-[50px] bg-[url('/logos.png')] bg-no-repeat bg-[-50px] border-[6px] border-orange-L2 rounded-md box-content"></li>
-                      <li className="bg-orange-L2 w-[50px] h-[50px] bg-[url('/logos.png')] bg-no-repeat bg-[-100px] border-[6px] border-orange-L2 rounded-md box-content"></li>
-                      <li className="bg-orange-L2 w-[50px] h-[50px] bg-[url('/logos.png')] bg-no-repeat bg-[-150px] border-[6px] border-orange-L2 rounded-md box-content"></li>
+                    <ul className="flex gap-2 py-4 text-3xl justify-center">
+                      <li className="bg-white w-[50px] h-[50px] bg-[url('/logos.png')] bg-no-repeat bg-[-100px] border-[6px] border-white rounded-md box-content shadow-md">
+                        <span className="sr-only">그누보드 로고</span>
+                      </li>
+                      <li className="bg-white w-[50px] h-[50px] bg-[url('/logos.png')] bg-no-repeat border-[6px] border-white rounded-md box-content bg-[2px] shadow-md">
+                        <span className="sr-only">제이쿼리 로고</span>
+                      </li>
+                      <li className="bg-white w-[50px] h-[50px] bg-[url('/logos.png')] bg-no-repeat bg-[-50px] border-[6px] border-white rounded-md box-content shadow-md">
+                        <span className="sr-only">PHP 로고</span>
+                      </li>
+
+                      <li className="bg-white w-[50px] h-[50px] bg-[url('/logos.png')] bg-no-repeat bg-[-150px] border-[6px] border-white rounded-md box-content shadow-md">
+                        <span className="sr-only">mysql 로고</span>
+                      </li>
                     </ul>
                   </li>
                   <li className="bg-white rounded-xl p-8 shadow-xl flex flex-col gap-4">
