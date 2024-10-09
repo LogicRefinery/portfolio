@@ -1,11 +1,6 @@
-import type { Metadata } from "next";
-import { Noto_Sans_KR } from "next/font/google";
 import "./globals.css";
-
-const noto_sans_kr = Noto_Sans_KR({
-  subsets: ["latin"],
-  display: "swap",
-});
+import type { Metadata } from "next";
+import { noto_sans_kr } from "@/_fonts/fonts";
 
 export const metadata: Metadata = {
   title: "김태형의 포트폴리오",
@@ -19,7 +14,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
-      <body className={noto_sans_kr.className}>{children}</body>
+      <body
+        className={`${noto_sans_kr.className} text-apple-black tracking-tighter`}
+      >
+        {children}
+      </body>
     </html>
   );
 }
