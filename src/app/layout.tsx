@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: "김태형의 포트폴리오",
   description: "김태형의 프론트엔드 개발자 포트폴리오",
   openGraph: {
-    images: ["/logos.png"],
+    images: ["/profile.webp"],
   },
 };
 
