@@ -1,12 +1,6 @@
+"use client";
 import Header from "@/_components/Header";
 import { TbWorldWww } from "react-icons/tb";
-import { FaHtml5 } from "react-icons/fa";
-import { IoLogoCss3 } from "react-icons/io";
-import { FaJsSquare } from "react-icons/fa";
-import { BiLogoTypescript } from "react-icons/bi";
-import { FaReact } from "react-icons/fa";
-import { SiRedux } from "react-icons/si";
-import { RiNextjsFill } from "react-icons/ri";
 import { RiSupabaseLine } from "react-icons/ri";
 import { FaStarOfLife } from "react-icons/fa6";
 import { IoIosCall } from "react-icons/io";
@@ -14,23 +8,20 @@ import { MdOutlineMail } from "react-icons/md";
 import { BiSolidSchool } from "react-icons/bi";
 import { IoSchoolOutline } from "react-icons/io5";
 import { FaSquareGithub } from "react-icons/fa6";
-import { SiStyledcomponents } from "react-icons/si";
-import { SiReactquery } from "react-icons/si";
 import { SiReacthookform } from "react-icons/si";
-import { SiLodash } from "react-icons/si";
-import { FaSass } from "react-icons/fa";
 import { SiVelog } from "react-icons/si";
-import { RiTailwindCssFill } from "react-icons/ri";
 import { SiPrisma } from "react-icons/si";
 import { shrikhand } from "@/_fonts/fonts";
 import Image from "next/image";
 import Link from "next/link";
+import Svg from "@/_components/Svg";
 
 export default function Home() {
   return (
     <div>
       <div>
         <Header></Header>
+
         <main>
           <article>
             <h3 className="sr-only">포트폴리오 메인 콘텐츠</h3>
@@ -43,7 +34,7 @@ export default function Home() {
               </div>
             </section>
             <section className="py-40">
-              <div className="wrap w-[400px] md:w-[700px] xl:w-[1100px] mx-auto ">
+              <div className="wrap w-[400px] md:w-[700px] xl:w-[1100px] mx-auto transition-all">
                 <div className="mb-12 ">
                   <h4
                     className={`text-center text-7xl font-bold ${shrikhand.className} text-orange-L2 `}
@@ -60,6 +51,8 @@ export default function Home() {
                       src={"/profile.webp"}
                       alt="김태형 프로필사진"
                       fill
+                      priority
+                      sizes="50vw"
                     ></Image>
                   </div>
                   <div className="flex-1">
@@ -91,7 +84,7 @@ export default function Home() {
                       </li>
                       <li>
                         <p className="text-3xl font-bold">Education.</p>
-                        <p>
+                        <div>
                           <ul>
                             <li className="flex items-center gap-2">
                               <IoSchoolOutline size={16} />
@@ -103,11 +96,11 @@ export default function Home() {
                               인천반도체고등학교 전산과 2009.03 - 2012.02
                             </li>
                           </ul>
-                        </p>
+                        </div>
                       </li>
                       <li>
                         <p className="text-3xl font-bold">Contact.</p>
-                        <p>
+                        <div>
                           <ul>
                             <li className="flex items-center gap-2">
                               <IoIosCall size={16} />
@@ -118,28 +111,28 @@ export default function Home() {
                               xoguddkenl@gmail.com
                             </li>
                           </ul>
-                        </p>
+                        </div>
                       </li>
                       <li>
                         <p className="text-3xl font-bold">Archiving.</p>
-                        <p className="flex items-center gap-1">
+                        <div className="flex items-center gap-1">
                           <Link
                             href={"https://velog.io/@taehyung/posts"}
-                            target="_blink"
+                            target="_blank"
                             style={{ color: "#23c99a" }}
                           >
                             <SiVelog size={50} />
                           </Link>
                           <Link
                             href={"https://github.com/LogicRefinery"}
-                            target="_blink"
+                            target="_blank"
                           >
                             <FaSquareGithub size={55} />
                           </Link>
                           <p className="text-gray-400 text-sm ml-auto">
                             Update 2024.10.09
                           </p>
-                        </p>
+                        </div>
                       </li>
                     </ul>
                   </div>
@@ -147,7 +140,7 @@ export default function Home() {
               </div>
             </section>
             <section className="py-40 bg-orange-L1">
-              <div className="wrap w-[400px] md:w-[700px] xl:w-[1100px] mx-auto ">
+              <div className="wrap w-[400px] md:w-[700px] xl:w-[1100px] mx-auto transition-all">
                 <div className="mb-12">
                   <h4
                     className={`text-center text-7xl font-bold ${shrikhand.className} text-orange-L2 `}
@@ -176,77 +169,65 @@ export default function Home() {
                       </li>
                       <li>
                         금 거래소 웹사이트 핵심 스킨 개발
-                        <p className="pl-6 font-normal text-apple-gray">
-                          <ul className="list-decimal list-inside">
-                            <li>
-                              당일 금 시세를 확인하고 게시판에 입력 index에
-                              날짜별 표 형태로 노출하는 기능 ( 당시 금 시세
-                              API가 존재하지 않아 사용자 직접입력 )
-                            </li>
-                            <li>입력된 시세 데이터베이스에 저장 및 소팅</li>
-                            <li>입력된 시세 날짜별 조회 기능 </li>
-                            <li>기간 선택 후 표형태 PDF 파일 출력 기능</li>
-                          </ul>
-                        </p>
+                        <ul className="list-decimal list-inside pl-6 font-normal text-apple-gray">
+                          <li>
+                            당일 금 시세를 확인하고 게시판에 입력 index에 날짜별
+                            표 형태로 노출하는 기능 ( 당시 금 시세 API가
+                            존재하지 않아 사용자 직접입력 )
+                          </li>
+                          <li>입력된 시세 데이터베이스에 저장 및 소팅</li>
+                          <li>입력된 시세 날짜별 조회 기능 </li>
+                          <li>기간 선택 후 표형태 PDF 파일 출력 기능</li>
+                        </ul>
                       </li>
                       <li>
                         네이버 블로그 게시글 키워드 검색 스킨 개발
-                        <p className="pl-6 font-normal text-apple-gray">
-                          <ul className="list-decimal list-inside">
-                            <li>네이버 블로그 API 활용</li>
-                            <li>
-                              사용자가 입력한 키워드를 가진 블로그 게시글 날짜순
-                              노출 기능
-                            </li>
-                            <li>모바일, 웹 각각 노출 갯수 설정 기능</li>
-                          </ul>
-                        </p>
+                        <ul className="list-decimal list-inside pl-6 font-normal text-apple-gray">
+                          <li>네이버 블로그 API 활용</li>
+                          <li>
+                            사용자가 입력한 키워드를 가진 블로그 게시글 날짜순
+                            노출 기능
+                          </li>
+                          <li>모바일, 웹 각각 노출 갯수 설정 기능</li>
+                        </ul>
                       </li>
                       <li>
                         index 페이지 노출형 토글 상담문의 스킨 개발
-                        <p className="pl-6 font-normal text-apple-gray">
-                          <ul className="list-decimal list-inside">
-                            <li>LGU+ SMS API 활용</li>
-                            <li>
-                              index 페이지에 이름 전화번호등 유저가 입력하고
-                              문의하기 버튼 클릭시 운영자에게 SMS 발송 기능
-                            </li>
-                          </ul>
-                        </p>
+                        <ul className="list-decimal list-inside pl-6 font-normal text-apple-gray">
+                          <li>LGU+ SMS API 활용</li>
+                          <li>
+                            index 페이지에 이름 전화번호등 유저가 입력하고
+                            문의하기 버튼 클릭시 운영자에게 SMS 발송 기능
+                          </li>
+                        </ul>
                       </li>
                       <li>
                         index 페이지 노출형 청소견적 스킨 개발
-                        <p className="pl-6 font-normal text-apple-gray">
-                          <ul className="list-decimal list-inside">
-                            <li>
-                              주거형태, 평수, 청소형태 등 유저가 입력한 데이터를
-                              연동된 게시판에 자동으로 작성되는 기능
-                            </li>
-                          </ul>
-                        </p>
+                        <ul className="list-decimal list-inside pl-6 font-normal text-apple-gray">
+                          <li>
+                            주거형태, 평수, 청소형태 등 유저가 입력한 데이터를
+                            연동된 게시판에 자동으로 작성되는 기능
+                          </li>
+                        </ul>
                       </li>
                       <li>
                         index 페이지 노출형 인피니티 롤링 배너 스킨 개발
-                        <p className="pl-6 font-normal text-apple-gray">
-                          <ul className="list-decimal list-inside">
-                            <li>
-                              운영자가 롤링 배너와 연동된 게시판에 이미지를
-                              업로드 시 index 롤링 배너에 추가되는 기능
-                            </li>
-                          </ul>
-                        </p>
+                        <ul className="list-decimal list-inside pl-6 font-normal text-apple-gray">
+                          <li>
+                            운영자가 롤링 배너와 연동된 게시판에 이미지를 업로드
+                            시 index 롤링 배너에 추가되는 기능
+                          </li>
+                        </ul>
                       </li>
                       <li>
                         반응형 통합문의 게시판 스킨 개발
-                        <p className="pl-6 font-normal text-apple-gray">
-                          <ul className="list-decimal list-inside">
-                            <li>LGU+ SMS API 활용</li>
-                            <li>
-                              유저가 게시판에 문의글 작성시 제목, 내용 등
-                              관련내용을 포함한 SMS를 관리자에게 발송하는 기능
-                            </li>
-                          </ul>
-                        </p>
+                        <ul className="list-decimal list-inside pl-6 font-normal text-apple-gray">
+                          <li>LGU+ SMS API 활용</li>
+                          <li>
+                            유저가 게시판에 문의글 작성시 제목, 내용 등
+                            관련내용을 포함한 SMS를 관리자에게 발송하는 기능
+                          </li>
+                        </ul>
                       </li>
                     </ul>
                     <ul className="flex gap-2 py-4 text-3xl justify-center">
@@ -266,17 +247,16 @@ export default function Home() {
                     </ul>
                   </li>
                   <li className="bg-white rounded-xl p-8 shadow-xl flex flex-col gap-4">
-                    <div>
-                      <p className="text-center text-xl font-bold text-orange-L2">
-                        앞으로 이곳을 함께 채워나가고 싶어요.
-                      </p>
-                    </div>
+                    <p className="text-center text-xl font-bold text-orange-L2">
+                      앞으로 이곳을 함께 채워나가고 싶어요.
+                    </p>
                   </li>
                 </ul>
               </div>
             </section>
+
             <section className="py-40">
-              <div className="wrap w-[400px] md:w-[700px] xl:w-[1100px] mx-auto ">
+              <div className="wrap w-[400px] md:w-[700px] xl:w-[1100px] mx-auto transition-all">
                 <div className="mb-12">
                   <h4
                     className={`text-center text-7xl font-bold ${shrikhand.className} text-orange-L2 `}
@@ -291,58 +271,69 @@ export default function Home() {
                 <div>
                   <ul className="flex flex-wrap gap-4 justify-between">
                     <li className="basis-[calc(25%-16px)] flex items-center justify-center">
-                      <div className="bg-gray-300 p-3 pt-[6px] rounded-[40px]">
+                      <div className="bg-apple-gray p-3 pt-[6px] rounded-[40px] hover:bg-orange-L2 group hover:scale-105 hover:-translate-y-2 transition-all cursor-pointer">
                         <div className="bg-white rounded-[20px] p-6">
-                          <TbWorldWww size={60} stroke="red"></TbWorldWww>
+                          <TbWorldWww
+                            size={60}
+                            className="stroke-apple-gray group-hover:stroke-orange-L2 transition-all"
+                          />
+                        </div>
+                      </div>
+                    </li>
+
+                    <li className="basis-[calc(25%-16px)] flex items-center justify-center">
+                      <div className="bg-apple-gray p-3 pt-[6px] rounded-[40px] hover:bg-orange-L2 group hover:scale-105 hover:-translate-y-2 transition-all cursor-pointer">
+                        <div className="bg-white rounded-[20px] p-6 h-full w-full">
+                          <span className="sr-only">html로고</span>
+                          {Svg("html", 60, 60, "fill-[#86868B]", true)}
                         </div>
                       </div>
                     </li>
                     <li className="basis-[calc(25%-16px)] flex items-center justify-center">
-                      <div className="bg-orange-L2 p-3 pt-[6px] rounded-[40px]">
+                      <div className="bg-apple-gray p-3 pt-[6px] rounded-[40px] hover:bg-orange-L2 group hover:scale-105 hover:-translate-y-2 transition-all cursor-pointer">
                         <div className="bg-white rounded-[20px] p-6">
-                          <FaHtml5 size={60}></FaHtml5>
+                          <span className="sr-only">css 로고</span>
+                          {Svg("css", 60, 60, "fill-[#86868B]", true)}
                         </div>
                       </div>
                     </li>
                     <li className="basis-[calc(25%-16px)] flex items-center justify-center">
-                      <div className="bg-orange-L2 p-3 pt-[6px] rounded-[40px]">
+                      <div className="bg-apple-gray p-3 pt-[6px] rounded-[40px] hover:bg-orange-L2 group hover:scale-105 hover:-translate-y-2 transition-all cursor-pointer">
                         <div className="bg-white rounded-[20px] p-6">
-                          <IoLogoCss3 size={60}></IoLogoCss3>
+                          <span className="sr-only">js 로고</span>
+                          {Svg("js", 60, 60, "fill-[#86868B]", true)}
                         </div>
                       </div>
                     </li>
                     <li className="basis-[calc(25%-16px)] flex items-center justify-center">
-                      <div className="bg-orange-L2 p-3 pt-[6px] rounded-[40px]">
+                      <div className="bg-apple-gray p-3 pt-[6px] rounded-[40px] hover:bg-orange-L2 group hover:scale-105 hover:-translate-y-2 transition-all cursor-pointer">
                         <div className="bg-white rounded-[20px] p-6">
-                          <FaJsSquare size={60}></FaJsSquare>
+                          <span className="sr-only">ts 로고</span>
+                          {Svg("ts", 60, 60, "fill-[#86868B]", true)}
                         </div>
                       </div>
                     </li>
                     <li className="basis-[calc(25%-16px)] flex items-center justify-center">
-                      <div className="bg-orange-L2 p-3 pt-[6px] rounded-[40px]">
+                      <div className="bg-apple-gray p-3 pt-[6px] rounded-[40px] hover:bg-orange-L2 group hover:scale-105 hover:-translate-y-2 transition-all cursor-pointer">
                         <div className="bg-white rounded-[20px] p-6">
-                          <BiLogoTypescript size={60}></BiLogoTypescript>
+                          <span className="sr-only">react 로고</span>
+                          {Svg("react", 60, 60, "fill-[#86868B]", true)}
                         </div>
                       </div>
                     </li>
                     <li className="basis-[calc(25%-16px)] flex items-center justify-center">
-                      <div className="bg-orange-L2 p-3 pt-[6px] rounded-[40px]">
+                      <div className="bg-apple-gray p-3 pt-[6px] rounded-[40px] hover:bg-orange-L2 group hover:scale-105 hover:-translate-y-2 transition-all cursor-pointer">
                         <div className="bg-white rounded-[20px] p-6">
-                          <FaReact size={60}></FaReact>
+                          <span className="sr-only">next 로고</span>
+                          {Svg("next", 60, 60, "fill-[#86868B]", true)}
                         </div>
                       </div>
                     </li>
                     <li className="basis-[calc(25%-16px)] flex items-center justify-center">
-                      <div className="bg-orange-L2 p-3 pt-[6px] rounded-[40px]">
+                      <div className="bg-apple-gray p-3 pt-[6px] rounded-[40px] hover:bg-orange-L2 group hover:scale-105 hover:-translate-y-2 transition-all cursor-pointer">
                         <div className="bg-white rounded-[20px] p-6">
-                          <RiNextjsFill size={60}></RiNextjsFill>
-                        </div>
-                      </div>
-                    </li>
-                    <li className="basis-[calc(25%-16px)] flex items-center justify-center">
-                      <div className="bg-orange-L2 p-3 pt-[6px] rounded-[40px]">
-                        <div className="bg-white rounded-[20px] p-6">
-                          <RiSupabaseLine size={60}></RiSupabaseLine>
+                          <span className="sr-only">supabase 로고</span>
+                          {Svg("supabase", 60, 60, "fill-[#86868B]", true)}
                         </div>
                       </div>
                     </li>
@@ -364,13 +355,89 @@ export default function Home() {
                 </div>
                 <div>
                   <ul className="flex flex-wrap gap-4">
-                    <li className="basis-[calc(33%-8px)] pb-4 shadow-lg rounded-md overflow-hidden bg-orange-L3 relative h-[500px] flex flex-col justify-end flex-1">
+                    <li className="basis-[calc(33%-8px)] pb-4 shadow-lg rounded-md overflow-hidden bg-orange-L3 relative h-[500px] flex flex-col justify-end flex-1 hover:-translate-y-4 hover:scale-105 transition-all group">
+                      <div className=" absolute left-0 top-0 w-full h-full bg-apple-black z-10 hidden bg-opacity-50 group-hover:flex group-hover:flex-col group-hover:justify-center gap-4 text-white">
+                        <div className="w-full">
+                          <button
+                            className="rounded-md w-1/2 py-2 px-4 block m-auto bg-orange-L3"
+                            onClick={() => {
+                              console.log("github 클릭");
+                            }}
+                          >
+                            상세보기
+                          </button>
+                        </div>
+                        <div className="w-full">
+                          <Link
+                            href={"https://github.com/LogicRefinery/portfolio"}
+                            target="_blank"
+                            className="rounded-md w-1/2 py-2 px-4 block m-auto bg-orange-L3  text-center"
+                          >
+                            github
+                          </Link>
+                        </div>
+                      </div>
+                      <div className=" absolute  rounded-full overflow-hidden w-[200px] h-[200px] bg-white border-[6px] border-orange-L3 left-1/2 top-1/3 translate-x-[-50%] translate-y-[-50%] ">
+                        <Image
+                          src={"/portfolio.webp"}
+                          alt="포트폴리오 웹사이트 이미지"
+                          width={188}
+                          height={188}
+                        ></Image>
+                      </div>
+                      <div className="bg-white h-[calc(66.6%-16px)] p-4 flex justify-end flex-col gap-2">
+                        <div className="font-bold">포트폴리오 웹</div>
+
+                        <div className="text-sm text-apple-gray mt-[-8px]">
+                          2024.10.10 - 진행중
+                        </div>
+                        <div className="text-sm">
+                          프론트엔드 개발자로서의 이력을 표현한 포트폴리오
+                          웹입니다.
+                        </div>
+                        <div>
+                          <ul className="flex gap-2 py-4">
+                            <li>
+                              {Svg("next", 40, 40, "fill-[#1d1d1f]", false)}
+                            </li>
+                            <li>
+                              {Svg("ts", 40, 40, "fill-[#007acc]", false)}
+                            </li>
+                            <li>
+                              {Svg("tailwind", 40, 40, "fill-[#38bdf8]", false)}
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </li>
+                    <li className="basis-[calc(33%-8px)] pb-4 shadow-lg rounded-md overflow-hidden bg-orange-L3 relative h-[500px] flex flex-col justify-end flex-1 hover:-translate-y-4 hover:scale-105 transition-all group">
+                      <div className=" absolute left-0 top-0 w-full h-full bg-apple-black z-10 hidden bg-opacity-50 group-hover:flex group-hover:flex-col group-hover:justify-center gap-4 text-white">
+                        <div className="w-full">
+                          <button
+                            className="rounded-md w-1/2 py-2 px-4 block m-auto bg-orange-L3"
+                            onClick={() => {
+                              console.log("github 클릭");
+                            }}
+                          >
+                            상세보기
+                          </button>
+                        </div>
+                        <div className="w-full">
+                          <Link
+                            href={"https://github.com/LogicRefinery/components"}
+                            target="_blank"
+                            className="rounded-md w-1/2 py-2 px-4 block m-auto bg-orange-L3  text-center"
+                          >
+                            github
+                          </Link>
+                        </div>
+                      </div>
                       <div className=" absolute  rounded-full overflow-hidden w-[200px] h-[200px] bg-white border-[6px] border-orange-L3 left-1/2 top-1/3 translate-x-[-50%] translate-y-[-50%]">
                         <Image
-                          src={"/thform.webp"}
-                          alt="test"
-                          fill
-                          objectFit="cover"
+                          src={"/common.png"}
+                          alt="공통 컴포넌트 셀렉트박스 이미지"
+                          width={188}
+                          height={188}
                         ></Image>
                       </div>
                       <div className="bg-white h-[calc(66.6%-16px)] p-4 flex justify-end flex-col gap-2">
@@ -385,32 +452,47 @@ export default function Home() {
                         <div>
                           <ul className="flex gap-2 py-4">
                             <li>
-                              <RiNextjsFill size={40}></RiNextjsFill>
+                              {Svg("next", 40, 40, "fill-[#1d1d1f]", false)}
                             </li>
                             <li>
-                              <BiLogoTypescript size={40}></BiLogoTypescript>
+                              {Svg("ts", 40, 40, "fill-[#007acc]", false)}
                             </li>
+
                             <li>
-                              <SiPrisma size={40} />
+                              {Svg("tailwind", 40, 40, "fill-[#38bdf8]", false)}
                             </li>
-                            <li>
-                              <RiSupabaseLine size={40}></RiSupabaseLine>
-                            </li>
-                            <li>
-                              <RiTailwindCssFill size={40}></RiTailwindCssFill>
-                            </li>
-                            <li>Context Api</li>
                           </ul>
                         </div>
                       </div>
                     </li>
-                    <li className="basis-[calc(33%-8px)] pb-4 shadow-lg rounded-md overflow-hidden bg-orange-L3 relative h-[500px] flex flex-col justify-end flex-1">
+                    <li className="basis-[calc(33%-8px)] pb-4 shadow-lg rounded-md overflow-hidden bg-orange-L3 relative h-[500px] flex flex-col justify-end flex-1 hover:-translate-y-4 hover:scale-105 transition-all group">
+                      <div className=" absolute left-0 top-0 w-full h-full bg-apple-black z-10 hidden bg-opacity-50 group-hover:flex group-hover:flex-col group-hover:justify-center gap-4 text-white">
+                        <div className="w-full">
+                          <button
+                            className="rounded-md w-1/2 py-2 px-4 block m-auto bg-orange-L3"
+                            onClick={() => {
+                              console.log("github 클릭");
+                            }}
+                          >
+                            상세보기
+                          </button>
+                        </div>
+                        <div className="w-full">
+                          <Link
+                            href={"https://github.com/LogicRefinery/supatodo"}
+                            target="_blank"
+                            className="rounded-md w-1/2 py-2 px-4 block m-auto bg-orange-L3  text-center"
+                          >
+                            github
+                          </Link>
+                        </div>
+                      </div>
                       <div className=" absolute  rounded-full overflow-hidden w-[200px] h-[200px] bg-white border-[6px] border-orange-L3 left-1/2 top-1/3 translate-x-[-50%] translate-y-[-50%]">
                         <Image
-                          src={"/thform.webp"}
-                          alt="test"
-                          fill
-                          objectFit="cover"
+                          src={"/supatodo.png"}
+                          alt="수파투두 투두리스트 이미지"
+                          width={188}
+                          height={188}
                         ></Image>
                       </div>
                       <div className="bg-white h-[calc(66.6%-16px)] p-4 flex justify-end flex-col gap-2">
@@ -425,10 +507,10 @@ export default function Home() {
                         <div>
                           <ul className="flex gap-2 py-4">
                             <li>
-                              <RiNextjsFill size={40}></RiNextjsFill>
+                              {Svg("next", 40, 40, "fill-[#1d1d1f]", false)}
                             </li>
                             <li>
-                              <BiLogoTypescript size={40}></BiLogoTypescript>
+                              {Svg("ts", 40, 40, "fill-[#007acc]", false)}
                             </li>
                             <li>
                               <SiPrisma size={40} />
@@ -437,20 +519,41 @@ export default function Home() {
                               <RiSupabaseLine size={40}></RiSupabaseLine>
                             </li>
                             <li>
-                              <RiTailwindCssFill size={40}></RiTailwindCssFill>
+                              {Svg("tailwind", 40, 40, "fill-[#38bdf8]", false)}
                             </li>
                             <li className="">Context Api</li>
                           </ul>
                         </div>
                       </div>
                     </li>
-                    <li className="basis-[calc(33%-8px)] pb-4 shadow-lg rounded-md overflow-hidden bg-orange-L3 relative h-[500px] flex flex-col justify-end flex-1">
+                    <li className="basis-[calc(33%-8px)] pb-4 shadow-lg rounded-md overflow-hidden bg-orange-L3 relative h-[500px] flex flex-col justify-end flex-1 hover:-translate-y-4 hover:scale-105 transition-all group">
+                      <div className=" absolute left-0 top-0 w-full h-full bg-apple-black z-10 hidden bg-opacity-50 group-hover:flex group-hover:flex-col group-hover:justify-center gap-4 text-white">
+                        <div className="w-full">
+                          <button
+                            className="rounded-md w-1/2 py-2 px-4 block m-auto bg-orange-L3"
+                            onClick={() => {
+                              console.log("github 클릭");
+                            }}
+                          >
+                            상세보기
+                          </button>
+                        </div>
+                        <div className="w-full">
+                          <Link
+                            href={"https://github.com/LogicRefinery/THForm"}
+                            target="_blank"
+                            className="rounded-md w-1/2 py-2 px-4 block m-auto bg-orange-L3  text-center"
+                          >
+                            github
+                          </Link>
+                        </div>
+                      </div>
                       <div className=" absolute  rounded-full overflow-hidden w-[200px] h-[200px] bg-white border-[6px] border-orange-L3 left-1/2 top-1/3 translate-x-[-50%] translate-y-[-50%]">
                         <Image
-                          src={"/thform.webp"}
-                          alt="test"
-                          fill
-                          objectFit="cover"
+                          src={"/form.png"}
+                          alt="thfrom 웹사이트 이미지"
+                          width={188}
+                          height={188}
                         ></Image>
                       </div>
                       <div className="bg-white h-[calc(66.6%-16px)] p-4 flex justify-end flex-col gap-2">
@@ -466,30 +569,49 @@ export default function Home() {
                         <div>
                           <ul className="flex gap-2 py-4">
                             <li>
-                              <FaReact size={40}></FaReact>
+                              {Svg("react", 40, 40, "fill-[#61DAFB]", false)}
                             </li>
                             <li>
-                              <BiLogoTypescript size={40}></BiLogoTypescript>
+                              {Svg("ts", 40, 40, "fill-[#007acc]", false)}
                             </li>
                             <li>
-                              <SiRedux size={40}></SiRedux>
+                              {Svg("redux", 40, 40, "fill-[#764abc]", false)}
                             </li>
                             <li>
-                              <SiStyledcomponents
-                                size={40}
-                              ></SiStyledcomponents>
+                              {Svg("styledComponents", 40, 40, "", false)}
                             </li>
                           </ul>
                         </div>
                       </div>
                     </li>
-                    <li className="basis-[calc(33%-8px)] pb-4 shadow-lg rounded-md overflow-hidden bg-orange-L3 relative h-[500px] flex flex-col justify-end flex-1">
+                    <li className="basis-[calc(33%-8px)] pb-4 shadow-lg rounded-md overflow-hidden bg-orange-L3 relative h-[500px] flex flex-col justify-end flex-1 hover:-translate-y-4 hover:scale-105 transition-all group">
+                      <div className=" absolute left-0 top-0 w-full h-full bg-apple-black z-10 hidden bg-opacity-50 group-hover:flex group-hover:flex-col group-hover:justify-center gap-4 text-white">
+                        <div className="w-full">
+                          <button
+                            className="rounded-md w-1/2 py-2 px-4 block m-auto bg-orange-L3"
+                            onClick={() => {
+                              console.log("github 클릭");
+                            }}
+                          >
+                            상세보기
+                          </button>
+                        </div>
+                        <div className="w-full">
+                          <Link
+                            href={"https://github.com/LogicRefinery/todayhouse"}
+                            target="_blank"
+                            className="rounded-md w-1/2 py-2 px-4 block m-auto bg-orange-L3  text-center"
+                          >
+                            github
+                          </Link>
+                        </div>
+                      </div>
                       <div className=" absolute  rounded-full overflow-hidden w-[200px] h-[200px] bg-white border-[6px] border-orange-L3 left-1/2 top-1/3 translate-x-[-50%] translate-y-[-50%]">
                         <Image
-                          src={"/thform.webp"}
-                          alt="test"
-                          fill
-                          objectFit="cover"
+                          src={"/mall.png"}
+                          alt="thmall 웹사이트 이미지"
+                          width={188}
+                          height={188}
                         ></Image>
                       </div>
                       <div className="bg-white h-[calc(66.6%-16px)] p-4 flex justify-end flex-col gap-2">
@@ -504,34 +626,53 @@ export default function Home() {
                         <div>
                           <ul className="flex gap-2 py-4">
                             <li>
-                              <RiNextjsFill size={40}></RiNextjsFill>
+                              {Svg("next", 40, 40, "fill-[#1d1d1f]", false)}
                             </li>
                             <li>
-                              <BiLogoTypescript size={40}></BiLogoTypescript>
+                              {Svg("ts", 40, 40, "fill-[#007acc]", false)}
                             </li>
                             <li>
                               <SiReacthookform size={40}></SiReacthookform>
                             </li>
                             <li>
-                              <SiLodash size={40}></SiLodash>
+                              {Svg("lodash", 40, 40, "fill-[#3492ff]", false)}
                             </li>
+                            <li>{Svg("reactQuery", 40, 40, "", false)}</li>
                             <li>
-                              <SiReactquery size={40}></SiReactquery>
-                            </li>
-                            <li>
-                              <FaSass size={40}></FaSass>
+                              {Svg("scss", 40, 40, "fill-[#CB6699]", false)}
                             </li>
                           </ul>
                         </div>
                       </div>
                     </li>
-                    <li className="basis-[calc(33%-8px)] pb-4 shadow-lg rounded-md overflow-hidden bg-orange-L3 relative h-[500px] flex flex-col justify-end flex-1">
+                    <li className="basis-[calc(33%-8px)] pb-4 shadow-lg rounded-md overflow-hidden bg-orange-L3 relative h-[500px] flex flex-col justify-end flex-1 hover:-translate-y-4 hover:scale-105 transition-all group">
+                      <div className=" absolute left-0 top-0 w-full h-full bg-apple-black z-10 hidden bg-opacity-50 group-hover:flex group-hover:flex-col group-hover:justify-center gap-4 text-white">
+                        <div className="w-full">
+                          <button
+                            className="rounded-md w-1/2 py-2 px-4 block m-auto bg-orange-L3"
+                            onClick={() => {
+                              console.log("github 클릭");
+                            }}
+                          >
+                            상세보기
+                          </button>
+                        </div>
+                        <div className="w-full">
+                          <Link
+                            href={"https://github.com/LogicRefinery/THGallery"}
+                            target="_blank"
+                            className="rounded-md w-1/2 py-2 px-4 block m-auto bg-orange-L3  text-center"
+                          >
+                            github
+                          </Link>
+                        </div>
+                      </div>
                       <div className=" absolute  rounded-full overflow-hidden w-[200px] h-[200px] bg-white border-[6px] border-orange-L3 left-1/2 top-1/3 translate-x-[-50%] translate-y-[-50%]">
                         <Image
-                          src={"/thform.webp"}
-                          alt="test"
-                          fill
-                          objectFit="cover"
+                          src={"/gallery.png"}
+                          alt="thgallery 웹사이트 이미지"
+                          width={188}
+                          height={188}
                         ></Image>
                       </div>
                       <div className="bg-white h-[calc(66.6%-16px)] p-4 flex justify-end flex-col gap-2">
@@ -546,11 +687,10 @@ export default function Home() {
                         <div>
                           <ul className="flex gap-2 py-4">
                             <li>
-                              <RiNextjsFill size={40}></RiNextjsFill>
+                              {Svg("next", 40, 40, "fill-[#1d1d1f]", false)}
                             </li>
-
                             <li>
-                              <FaSass size={40}></FaSass>
+                              {Svg("scss", 40, 40, "fill-[#CB6699]", false)}
                             </li>
                           </ul>
                         </div>
