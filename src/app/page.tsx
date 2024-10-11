@@ -1,6 +1,5 @@
 "use client";
 import Header from "@/_components/Header";
-import { TbWorldWww } from "react-icons/tb";
 import { RiSupabaseLine } from "react-icons/ri";
 import { FaStarOfLife } from "react-icons/fa6";
 import { IoIosCall } from "react-icons/io";
@@ -15,13 +14,24 @@ import { shrikhand } from "@/_fonts/fonts";
 import Image from "next/image";
 import Link from "next/link";
 import Svg from "@/_components/Svg";
+import { createPortal } from "react-dom";
+import Modal from "@/_components/Modal";
+import { useState } from "react";
+import Skills from "@/_components/Skills";
 
 export default function Home() {
+  const skils = Skills();
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [selectSkill, setSelectSkill] = useState<unknown | null>(null);
+
+  const modalController = (state: boolean) => {
+    setIsModalOpen(state);
+  };
+
   return (
     <div>
       <div>
         <Header></Header>
-
         <main>
           <article>
             <h3 className="sr-only">포트폴리오 메인 콘텐츠</h3>
@@ -270,74 +280,31 @@ export default function Home() {
                 </div>
                 <div>
                   <ul className="flex flex-wrap gap-4 justify-between">
-                    <li className="basis-[calc(25%-16px)] flex items-center justify-center">
-                      <div className="bg-apple-gray p-3 pt-[6px] rounded-[40px] hover:bg-orange-L2 group hover:scale-105 hover:-translate-y-2 transition-all cursor-pointer">
-                        <div className="bg-white rounded-[20px] p-6">
-                          <TbWorldWww
-                            size={60}
-                            className="stroke-apple-gray group-hover:stroke-orange-L2 transition-all"
-                          />
+                    {skils.map((skill) => (
+                      <li
+                        key={skill.title}
+                        className="basis-[calc(25%-16px)] flex items-center justify-center"
+                        onClick={() => {
+                          setIsModalOpen(true);
+                          setSelectSkill(skill);
+                        }}
+                      >
+                        <div className="bg-apple-gray p-3 pt-[6px] rounded-[40px] hover:bg-orange-L2 group hover:scale-105 hover:-translate-y-2 transition-all cursor-pointer">
+                          <div className="bg-white rounded-[20px] p-6">
+                            {skill.icon}
+                          </div>
                         </div>
-                      </div>
-                    </li>
-
-                    <li className="basis-[calc(25%-16px)] flex items-center justify-center">
-                      <div className="bg-apple-gray p-3 pt-[6px] rounded-[40px] hover:bg-orange-L2 group hover:scale-105 hover:-translate-y-2 transition-all cursor-pointer">
-                        <div className="bg-white rounded-[20px] p-6 h-full w-full">
-                          <span className="sr-only">html로고</span>
-                          {Svg("html", 60, 60, "fill-[#86868B]", true)}
-                        </div>
-                      </div>
-                    </li>
-                    <li className="basis-[calc(25%-16px)] flex items-center justify-center">
-                      <div className="bg-apple-gray p-3 pt-[6px] rounded-[40px] hover:bg-orange-L2 group hover:scale-105 hover:-translate-y-2 transition-all cursor-pointer">
-                        <div className="bg-white rounded-[20px] p-6">
-                          <span className="sr-only">css 로고</span>
-                          {Svg("css", 60, 60, "fill-[#86868B]", true)}
-                        </div>
-                      </div>
-                    </li>
-                    <li className="basis-[calc(25%-16px)] flex items-center justify-center">
-                      <div className="bg-apple-gray p-3 pt-[6px] rounded-[40px] hover:bg-orange-L2 group hover:scale-105 hover:-translate-y-2 transition-all cursor-pointer">
-                        <div className="bg-white rounded-[20px] p-6">
-                          <span className="sr-only">js 로고</span>
-                          {Svg("js", 60, 60, "fill-[#86868B]", true)}
-                        </div>
-                      </div>
-                    </li>
-                    <li className="basis-[calc(25%-16px)] flex items-center justify-center">
-                      <div className="bg-apple-gray p-3 pt-[6px] rounded-[40px] hover:bg-orange-L2 group hover:scale-105 hover:-translate-y-2 transition-all cursor-pointer">
-                        <div className="bg-white rounded-[20px] p-6">
-                          <span className="sr-only">ts 로고</span>
-                          {Svg("ts", 60, 60, "fill-[#86868B]", true)}
-                        </div>
-                      </div>
-                    </li>
-                    <li className="basis-[calc(25%-16px)] flex items-center justify-center">
-                      <div className="bg-apple-gray p-3 pt-[6px] rounded-[40px] hover:bg-orange-L2 group hover:scale-105 hover:-translate-y-2 transition-all cursor-pointer">
-                        <div className="bg-white rounded-[20px] p-6">
-                          <span className="sr-only">react 로고</span>
-                          {Svg("react", 60, 60, "fill-[#86868B]", true)}
-                        </div>
-                      </div>
-                    </li>
-                    <li className="basis-[calc(25%-16px)] flex items-center justify-center">
-                      <div className="bg-apple-gray p-3 pt-[6px] rounded-[40px] hover:bg-orange-L2 group hover:scale-105 hover:-translate-y-2 transition-all cursor-pointer">
-                        <div className="bg-white rounded-[20px] p-6">
-                          <span className="sr-only">next 로고</span>
-                          {Svg("next", 60, 60, "fill-[#86868B]", true)}
-                        </div>
-                      </div>
-                    </li>
-                    <li className="basis-[calc(25%-16px)] flex items-center justify-center">
-                      <div className="bg-apple-gray p-3 pt-[6px] rounded-[40px] hover:bg-orange-L2 group hover:scale-105 hover:-translate-y-2 transition-all cursor-pointer">
-                        <div className="bg-white rounded-[20px] p-6">
-                          <span className="sr-only">supabase 로고</span>
-                          {Svg("supabase", 60, 60, "fill-[#86868B]", true)}
-                        </div>
-                      </div>
-                    </li>
+                      </li>
+                    ))}
                   </ul>
+                  {isModalOpen &&
+                    createPortal(
+                      <Modal
+                        selectSkill={selectSkill}
+                        modalController={modalController}
+                      />,
+                      document.body
+                    )}
                 </div>
               </div>
             </section>
@@ -379,7 +346,7 @@ export default function Home() {
                       </div>
                       <div className=" absolute  rounded-full overflow-hidden w-[200px] h-[200px] bg-white border-[6px] border-orange-L3 left-1/2 top-1/3 translate-x-[-50%] translate-y-[-50%] ">
                         <Image
-                          src={"/portfolio.webp"}
+                          src={"/portfolio.png"}
                           alt="포트폴리오 웹사이트 이미지"
                           width={188}
                           height={188}
