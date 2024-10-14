@@ -22,7 +22,7 @@ import Skills from "@/_components/Skills";
 export default function Home() {
   const skils = Skills();
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-  const [selectSkill, setSelectSkill] = useState<unknown | null>(null);
+  const [selectSkill, setSelectSkill] = useState<any | null>(null);
 
   const modalController = (state: boolean) => {
     setIsModalOpen(state);

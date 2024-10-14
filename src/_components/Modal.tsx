@@ -3,7 +3,7 @@ import Link from "next/link";
 import React, { useEffect } from "react";
 
 type Props = {
-  selectSkill: unknown | null;
+  selectSkill: any | null;
   modalController: (state: boolean) => void;
 };
 
