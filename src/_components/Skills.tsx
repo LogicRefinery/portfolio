@@ -1,9 +1,10 @@
 import React from "react";
 import { TbWorldWww } from "react-icons/tb";
 import Svg from "./Svg";
+import { SkillItem } from "@/_model/skills";
 
 function Skills() {
-  const skills = [
+  const skills: SkillItem[] = [
     {
       title: "internet",
       icon: (
@@ -17,25 +18,25 @@ function Skills() {
           title: "DNS",
           description: "DNS의 역할과 개념에 대해 알고있습니다.",
         },
-        ,
+
         {
           title: "URI,URL,URN",
           description:
             "각각의 차이를 알고있고 URL의 경우 protocol://domain/path/parameter/query 구조에대해 알고있습니다.",
         },
-        ,
+
         {
           title: "RESTful API",
           description:
             "RESTful API의 개념을 알고있고 next 프로젝트의 경우 routeHandle, react 프로젝트의 경우 MSW를 사용하여 http 통신을 통한 클라이언트 <-> 서버 RESTful한 통신을 경험했습니다.",
         },
-        ,
+
         {
           title: "Web Storage",
           description:
             "Web Storage의 종류와 차이점을 알고있고 데이터베이스를 적용한 프로젝트를 제외한 프로젝트의 경우 데이터베스 대용으로 사용한 경험이 있습니다.",
         },
-        ,
+
         {
           title: "HTTP",
           description:
@@ -65,7 +66,7 @@ function Skills() {
           title: "웹 접근성",
           description: "웹 접근성의 개념에 대해 알고있습니다.",
         },
-        ,
+
         {
           title: "박스 모델링",
           description:
@@ -97,7 +98,7 @@ function Skills() {
           description:
             "Styled Component의 개념을 알고있으며 사용 경험은 그리 많지 않습니다.",
         },
-        ,
+
         {
           title: "TailWindCSS",
           description:
@@ -139,7 +140,7 @@ function Skills() {
           description:
             "자바스크립트의 함수 실행 환경인 실행 컨텍스트에 대해 이해하고 있습니다. Stack 자료구조 형태로 이루어져있고 함수 실행으로 인해 쌓여진 스택은 각각 새로운 실행 컨텍스트를 가집니다. 또 실행 컨텍스트 내부의 함수 실행 환경을 저장하고 있는 렉시컬 스코프에 대해 이해하고 있으며 렉시컬 스코프로 인해 발생하는 특수한 현상인 스코프, 스코프 체이닝, 호이스팅, 클로저, this를 이해하고있습니다.",
         },
-        ,
+
         {
           title: "Synchronous/Asynchronous",
           description:
@@ -177,7 +178,7 @@ function Skills() {
           description:
             "Interface와 Type을 이해하고 있으며 주로 Type을 사용합니다. Interface는 타입 상속과 오버라이딩을 사용할 수 있고 Type은 상속과 오버라이딩이 불가능하지만 유니온과 인터섹션을 사용할 수 있는 장점이 있습니다.",
         },
-        ,
+
         {
           title: "Type Guards",
           description:
@@ -195,33 +196,33 @@ function Skills() {
         },
       ],
     },
-    {
-      title: "react",
-      icon: (
-        <>
-          <span className="sr-only">react 로고</span>
-          {Svg("react", 60, 60, "fill-[#86868B]", true)}
-        </>
-      ),
-    },
-    {
-      title: "next",
-      icon: (
-        <>
-          <span className="sr-only">next 로고</span>
-          {Svg("next", 60, 60, "fill-[#86868B]", true)}
-        </>
-      ),
-    },
-    {
-      title: "supabase",
-      icon: (
-        <>
-          <span className="sr-only">supabase 로고</span>
-          {Svg("supabase", 60, 60, "fill-[#86868B]", true)}
-        </>
-      ),
-    },
+    // {
+    //   title: "react",
+    //   icon: (
+    //     <>
+    //       <span className="sr-only">react 로고</span>
+    //       {Svg("react", 60, 60, "fill-[#86868B]", true)}
+    //     </>
+    //   ),
+    // },
+    // {
+    //   title: "next",
+    //   icon: (
+    //     <>
+    //       <span className="sr-only">next 로고</span>
+    //       {Svg("next", 60, 60, "fill-[#86868B]", true)}
+    //     </>
+    //   ),
+    // },
+    // {
+    //   title: "supabase",
+    //   icon: (
+    //     <>
+    //       <span className="sr-only">supabase 로고</span>
+    //       {Svg("supabase", 60, 60, "fill-[#86868B]", true)}
+    //     </>
+    //   ),
+    // },
   ];
 
   return skills;

@@ -1,13 +1,16 @@
 "use client";
+import { SkillItem } from "@/_model/skills";
 import Link from "next/link";
 import React, { useEffect } from "react";
 
 type Props = {
-  selectSkill: any | null;
+  selectSkill: SkillItem | null;
   modalController: (state: boolean) => void;
 };
 
 function Modal({ selectSkill, modalController }: Props) {
+  console.log(selectSkill);
+
   useEffect(() => {
     document.body.style.overflow = "hidden";
 
@@ -25,7 +28,7 @@ function Modal({ selectSkill, modalController }: Props) {
         }}
       ></div>
       <div className="fixed inset-x-0 inset-y-0 z-20 overflow-y-auto my-10 mx-40 max-md:px-0 max-md:py-0 bg-white">
-        <div className="header">{selectSkill.title}</div>
+        <div className="header">{selectSkill && selectSkill.title}</div>
         <div className="body"></div>
         <div className="footer"></div>
       </div>

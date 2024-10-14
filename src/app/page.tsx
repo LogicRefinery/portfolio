@@ -18,11 +18,12 @@ import { createPortal } from "react-dom";
 import Modal from "@/_components/Modal";
 import { useState } from "react";
 import Skills from "@/_components/Skills";
+import { SkillItem } from "@/_model/skills";
 
 export default function Home() {
   const skils = Skills();
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-  const [selectSkill, setSelectSkill] = useState<any | null>(null);
+  const [selectSkill, setSelectSkill] = useState<SkillItem | null>(null);
 
   const modalController = (state: boolean) => {
     setIsModalOpen(state);
