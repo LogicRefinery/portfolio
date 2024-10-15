@@ -1,32 +1,39 @@
 "use client";
 import Header from "@/_components/Header";
-import { RiSupabaseLine } from "react-icons/ri";
 import { FaStarOfLife } from "react-icons/fa6";
 import { IoIosCall } from "react-icons/io";
 import { MdOutlineMail } from "react-icons/md";
 import { BiSolidSchool } from "react-icons/bi";
 import { IoSchoolOutline } from "react-icons/io5";
 import { FaSquareGithub } from "react-icons/fa6";
-import { SiReacthookform } from "react-icons/si";
 import { SiVelog } from "react-icons/si";
-import { SiPrisma } from "react-icons/si";
 import { shrikhand } from "@/_fonts/fonts";
 import Image from "next/image";
 import Link from "next/link";
-import Svg from "@/_components/Svg";
 import { createPortal } from "react-dom";
 import Modal from "@/_components/Modal";
 import { useState } from "react";
-import Skills from "@/_components/Skills";
 import { SkillItem } from "@/_model/skills";
+import PortfolioModal from "@/_components/PortfolioModal";
+import { skills } from "@/_components/Skills";
+import { portfolios } from "@/_components/Portfolios";
+import { Portfolio } from "@/_model/portfolio";
 
 export default function Home() {
-  const skils = Skills();
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [isSkillModalOpen, setIsSkillModalOpen] = useState<boolean>(false);
+  const [isPortfolioModalOpen, setIsPortfolioModalOpen] =
+    useState<boolean>(false);
   const [selectSkill, setSelectSkill] = useState<SkillItem | null>(null);
+  const [selectPortfolio, setSelectPortfolio] = useState<Portfolio | null>(
+    null
+  );
 
-  const modalController = (state: boolean) => {
-    setIsModalOpen(state);
+  const portfolioModalController = (state: boolean) => {
+    setIsPortfolioModalOpen(state);
+  };
+
+  const skillModalController = (state: boolean) => {
+    setIsSkillModalOpen(state);
   };
 
   return (
@@ -281,7 +288,7 @@ export default function Home() {
                 </div>
                 <div>
                   <ul className="flex flex-wrap gap-4 justify-between">
-                    {skils.map((skill) => (
+                    {skills.map((skill) => (
                       <li
                         key={skill.title}
                         className="basis-[calc(25%-16px)] flex items-center justify-center"
@@ -289,7 +296,7 @@ export default function Home() {
                         <div
                           className="bg-apple-gray p-3 pt-[6px] rounded-[40px] hover:bg-orange-L2 group hover:scale-105 hover:-translate-y-2 transition-all cursor-pointer"
                           onClick={() => {
-                            setIsModalOpen(true);
+                            skillModalController(true);
                             setSelectSkill(skill);
                           }}
                         >
@@ -300,11 +307,11 @@ export default function Home() {
                       </li>
                     ))}
                   </ul>
-                  {isModalOpen &&
+                  {isSkillModalOpen &&
                     createPortal(
                       <Modal
                         selectSkill={selectSkill}
-                        modalController={modalController}
+                        modalController={skillModalController}
                       />,
 
                       document.body
@@ -326,13 +333,80 @@ export default function Home() {
                 </div>
                 <div>
                   <ul className="flex flex-wrap gap-4">
-                    <li className="basis-[calc(33%-8px)] pb-4 shadow-lg rounded-md overflow-hidden bg-orange-L3 relative h-[500px] flex flex-col justify-end flex-1 hover:-translate-y-4 hover:scale-105 transition-all group">
+                    {portfolios.map((portfolio) => (
+                      // <li key={item.id}>aaa</li>
+                      <li
+                        key={portfolio.id}
+                        className="basis-[calc(33%-8px)] pb-4 shadow-lg rounded-md overflow-hidden bg-orange-L3 relative h-[400px] flex flex-col justify-end flex-1 hover:-translate-y-4 hover:scale-105 transition-all group"
+                      >
+                        <div className=" absolute left-0 top-0 w-full h-full bg-apple-black z-10 hidden bg-opacity-50 group-hover:flex group-hover:flex-col group-hover:justify-center gap-4 text-white">
+                          <div className="w-full">
+                            <button
+                              className="rounded-md w-1/2 py-2 px-4 block m-auto bg-orange-L3"
+                              onClick={() => {
+                                portfolioModalController(true);
+                                setSelectPortfolio(portfolio);
+                              }}
+                            >
+                              상세보기
+                            </button>
+                          </div>
+                          <div className="w-full">
+                            <Link
+                              href={
+                                "https://github.com/LogicRefinery/portfolio"
+                              }
+                              target="_blank"
+                              className="rounded-md w-1/2 py-2 px-4 block m-auto bg-orange-L3  text-center"
+                            >
+                              github
+                            </Link>
+                          </div>
+                        </div>
+                        <div className=" absolute rounded-full overflow-hidden w-[200px] h-[200px] bg-white border-[6px] border-orange-L1 left-1/2 top-1/3 translate-x-[-50%] translate-y-[-50%] ">
+                          <Image
+                            src={portfolio.image.url}
+                            alt={portfolio.image.description}
+                            fill
+                            style={{ objectFit: "cover" }}
+                            sizes="(max-width: 768px) 50vw,(max-width: 1280px) 50vw,33vh"
+                          ></Image>
+                        </div>
+                        <div className="bg-white h-[calc(66.6%-16px)] p-4 flex justify-end flex-col gap-2">
+                          <div className="font-bold">{portfolio.title}</div>
+
+                          <div className="text-sm overflow-hidden text-ellipsis whitespace-nowrap">
+                            {portfolio.description}
+                          </div>
+                          {/* <div>
+                            <ul className="flex gap-2 py-4">
+                              <li>
+                                {Svg("next", 40, 40, "fill-[#1d1d1f]", false)}
+                              </li>
+                              <li>
+                                {Svg("ts", 40, 40, "fill-[#007acc]", false)}
+                              </li>
+                              <li>
+                                {Svg(
+                                  "tailwind",
+                                  40,
+                                  40,
+                                  "fill-[#38bdf8]",
+                                  false
+                                )}
+                              </li>
+                            </ul>
+                          </div> */}
+                        </div>
+                      </li>
+                    ))}
+                    {/* <li className="basis-[calc(33%-8px)] pb-4 shadow-lg rounded-md overflow-hidden bg-orange-L3 relative h-[500px] flex flex-col justify-end flex-1 hover:-translate-y-4 hover:scale-105 transition-all group">
                       <div className=" absolute left-0 top-0 w-full h-full bg-apple-black z-10 hidden bg-opacity-50 group-hover:flex group-hover:flex-col group-hover:justify-center gap-4 text-white">
                         <div className="w-full">
                           <button
                             className="rounded-md w-1/2 py-2 px-4 block m-auto bg-orange-L3"
                             onClick={() => {
-                              console.log("github 클릭");
+                              portfolioModalController(true);
                             }}
                           >
                             상세보기
@@ -387,7 +461,7 @@ export default function Home() {
                           <button
                             className="rounded-md w-1/2 py-2 px-4 block m-auto bg-orange-L3"
                             onClick={() => {
-                              console.log("github 클릭");
+                              // setIsModalOpen(true);
                             }}
                           >
                             상세보기
@@ -666,8 +740,16 @@ export default function Home() {
                           </ul>
                         </div>
                       </div>
-                    </li>
+                    </li> */}
                   </ul>
+                  {isPortfolioModalOpen &&
+                    createPortal(
+                      <PortfolioModal
+                        modalController={portfolioModalController}
+                        selectPortfolio={selectPortfolio}
+                      />,
+                      document.body
+                    )}
                 </div>
               </div>
             </section>

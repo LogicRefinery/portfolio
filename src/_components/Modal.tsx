@@ -35,7 +35,6 @@ function Modal({ selectSkill, modalController }: Props) {
               {selectSkill?.icon}
             </div>
           </div>
-          {/* <div className="header text-3xl">{selectSkill?.title}</div> */}
         </div>
         <div className="body">
           <ul className="flex flex-col gap-6">
@@ -69,22 +68,6 @@ function Modal({ selectSkill, modalController }: Props) {
               ></IoCloseOutline>
             </button>
           </li>
-          {/* <li>
-            <Link
-              href="#"
-              className="bg-white w-[50px] h-[50px] rounded-full flex justify-center items-center"
-            >
-              <FaSquareGithub size={30}></FaSquareGithub>
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="#"
-              className="bg-white w-[50px] h-[50px] rounded-full flex justify-center items-center"
-            >
-              <FaLink size={30}></FaLink>
-            </Link>
-          </li> */}
         </ul>
       </div>
     </>
