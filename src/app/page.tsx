@@ -350,7 +350,7 @@ export default function Home() {
                       </div>
                       <div className=" absolute  rounded-full overflow-hidden w-[200px] h-[200px] bg-white border-[6px] border-orange-L3 left-1/2 top-1/3 translate-x-[-50%] translate-y-[-50%] ">
                         <Image
-                          src={"/portfolio.png"}
+                          src={"/portfolioImg.png"}
                           alt="포트폴리오 웹사이트 이미지"
                           width={188}
                           height={188}
@@ -405,7 +405,7 @@ export default function Home() {
                       </div>
                       <div className=" absolute  rounded-full overflow-hidden w-[200px] h-[200px] bg-white border-[6px] border-orange-L3 left-1/2 top-1/3 translate-x-[-50%] translate-y-[-50%]">
                         <Image
-                          src={"/common.png"}
+                          src={"/commonImg.png"}
                           alt="공통 컴포넌트 셀렉트박스 이미지"
                           width={188}
                           height={188}
@@ -460,7 +460,7 @@ export default function Home() {
                       </div>
                       <div className=" absolute  rounded-full overflow-hidden w-[200px] h-[200px] bg-white border-[6px] border-orange-L3 left-1/2 top-1/3 translate-x-[-50%] translate-y-[-50%]">
                         <Image
-                          src={"/supatodo.png"}
+                          src={"/supatodoImg.png"}
                           alt="수파투두 투두리스트 이미지"
                           width={188}
                           height={188}
@@ -521,7 +521,7 @@ export default function Home() {
                       </div>
                       <div className=" absolute  rounded-full overflow-hidden w-[200px] h-[200px] bg-white border-[6px] border-orange-L3 left-1/2 top-1/3 translate-x-[-50%] translate-y-[-50%]">
                         <Image
-                          src={"/form.png"}
+                          src={"/formImg.png"}
                           alt="thfrom 웹사이트 이미지"
                           width={188}
                           height={188}
@@ -579,7 +579,7 @@ export default function Home() {
                       </div>
                       <div className=" absolute  rounded-full overflow-hidden w-[200px] h-[200px] bg-white border-[6px] border-orange-L3 left-1/2 top-1/3 translate-x-[-50%] translate-y-[-50%]">
                         <Image
-                          src={"/mall.png"}
+                          src={"/mallImg.png"}
                           alt="thmall 웹사이트 이미지"
                           width={188}
                           height={188}
@@ -640,7 +640,7 @@ export default function Home() {
                       </div>
                       <div className=" absolute  rounded-full overflow-hidden w-[200px] h-[200px] bg-white border-[6px] border-orange-L3 left-1/2 top-1/3 translate-x-[-50%] translate-y-[-50%]">
                         <Image
-                          src={"/gallery.png"}
+                          src={"/galleryImg.png"}
                           alt="thgallery 웹사이트 이미지"
                           width={188}
                           height={188}
