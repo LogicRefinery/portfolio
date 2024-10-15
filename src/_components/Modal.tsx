@@ -1,9 +1,6 @@
 "use client";
 import { SkillDetail, SkillItem } from "@/_model/skills";
-import Link from "next/link";
 import React, { useEffect } from "react";
-import { FaSquareGithub } from "react-icons/fa6";
-import { FaLink } from "react-icons/fa6";
 import { IoCloseOutline } from "react-icons/io5";
 
 type Props = {
