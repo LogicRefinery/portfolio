@@ -196,33 +196,121 @@ function Skills() {
         },
       ],
     },
-    // {
-    //   title: "react",
-    //   icon: (
-    //     <>
-    //       <span className="sr-only">react 로고</span>
-    //       {Svg("react", 60, 60, "fill-[#86868B]", true)}
-    //     </>
-    //   ),
-    // },
-    // {
-    //   title: "next",
-    //   icon: (
-    //     <>
-    //       <span className="sr-only">next 로고</span>
-    //       {Svg("next", 60, 60, "fill-[#86868B]", true)}
-    //     </>
-    //   ),
-    // },
-    // {
-    //   title: "supabase",
-    //   icon: (
-    //     <>
-    //       <span className="sr-only">supabase 로고</span>
-    //       {Svg("supabase", 60, 60, "fill-[#86868B]", true)}
-    //     </>
-    //   ),
-    // },
+    {
+      title: "react",
+      icon: (
+        <>
+          <span className="sr-only">react 로고</span>
+          {Svg("react", 60, 60, "fill-[#86868B]", true)}
+        </>
+      ),
+      skills: [
+        {
+          title: "Virtual DOM",
+          description:
+            "리액트의 버추얼 돔 개념에 대해 이해하고 있습니다. 리액트는 화면의 변경을 감지하는 4가지 리렌더링 트리거(Props, State, 부모 컴포넌트 리렌더링, forceUpdate)를 통해 가상으로 메모리 내에서 유지하는 버추얼 돔을 업데이트합니다. 리액트는 변경된 상태를 반영하여 새로운 버추얼 돔을 만들고, 이전 버추얼 돔과 비교한 후, 변경된 부분만 실제 DOM에 반영하여 화면을 효율적으로 업데이트합니다.",
+        },
+        {
+          title: "JSX와 컴포넌트",
+          description:
+            "리액트 모듈인 컴포넌트에 대해 이해하고 있습니다. JSX로 이루어진 컴포넌트를 생성하고 활용할 수 있습니다.",
+        },
+        {
+          title: "상태관리",
+          description:
+            "리액트의 화면 리렌더링과 깊은 연관이 있는 상태에대해 이해하고있습니다. 지역 상태관리와 전역 상태관리에 대해 이해하고 있습니다.",
+        },
+
+        {
+          title: "최적화",
+          description:
+            "리액트 최적화 훅인 useMemo, useCallback, React.memo 에 대해 이해하고 있습니다. 또한 이미지를 최적화하기위해 webp 형식을 사용하거나 이미지 압축 라이브러리를 사용해본 경험이 있습니다.",
+        },
+        {
+          title: "라이프 사이클",
+          description:
+            "컴포넌트 라이프사이클 훅인 useEffect 에 대해 이해하고 있습니다. 컴포넌트의 마운트, 리렌더링, 언마운트 시점을 제어 할 수 있습니다.",
+        },
+        {
+          title: "전역 상태관리 및 플럭스 패턴",
+          description:
+            "컨텍스트 API, 리덕스, 리덕스 툴킷을 통한 전역 상태관리를 경험해보았습니다. 스토어, 액션, 디스패치를 통해 상태를 관리할 수 있습니다. 미들웨어를 사용한 비동기 처리도 경험해보았습니다.",
+        },
+        {
+          title: "리액트쿼리",
+          description:
+            "서버 상태와 클라이언트 상태를 구분하여 프로젝트에 적용한 경험이 있습니다. Next.js는 기본적으로 API 요청을 캐싱하고 관리하는 기능을 제공하지만, 리액트 쿼리를 사용하여 상태를 가시적으로 관리하고 화면에 선반영하는 등의 작업을 했습니다. 이를 위해 useQuery와 useMutation을 활용하여 서버와 클라이언트 간의 상태 동기화를 효과적으로 처리했습니다.",
+        },
+        {
+          title: "리액트훅폼",
+          description:
+            "useRef 기반의 상태관리 라이브러리인 리액트 훅폼을 사용해 본 경험이 있습니다. Ref 기반의 장점은 리렌더링 최적화가 있습니다. 리액트 훅폼은 비제어 컴포넌트로 각 form의 데이터가 변경되어도 리렌더링이 발생하지 않는 장점이 있습니다.",
+        },
+        {
+          title: "쓰로틀링과 디바운싱",
+          description:
+            "쓰로틀링과 디바운싱 매커니즘에 대해 이해하고 있습니다. 디바운싱을 직접 구현한 경험이 있습니다. 다만 추 후 lodash라는 라이브러리를 알게되어 프로젝트에 적용하여 API 호출 횟수를 최적화한 경험이 있습니다.",
+        },
+      ],
+    },
+    {
+      title: "next",
+      icon: (
+        <>
+          <span className="sr-only">next 로고</span>
+          {Svg("next", 60, 60, "fill-[#86868B]", true)}
+        </>
+      ),
+      skills: [
+        {
+          title: "CRS,SSR,SSG",
+          description:
+            "리액트의 렌더링 방식인 CRS와 프론트엔드 서버를 제공하고 서버에서 렌더링하여 사용자에게 보여주는 SSR과 프로젝트 빌드시에 렌더링하는 방식인 SSG에 대해 이해하고 있습니다. 각각 서버의 사용비용, 얼마나 다이나믹한 데이터가 필요한지, 사용자의 경험은 어느 측면이 좋은지 고려하여 사용하려고 노력합니다. SSG의 사용경험은 많지 않으나 그 장점을 이해하고있습니다.",
+        },
+        {
+          title: "라우팅",
+          description:
+            "App Router를 사용한 파일시스템 기반 라우팅을 이해하고 있습니다. 동적 라우팅, 중첩 라우팅을 사용하여 경로를 구조화 할 수 있습니다.",
+        },
+        {
+          title: "API Routes",
+          description:
+            "API 엔드포인트를 간단하게나마 제작한 경험이 있습니다. 기존에는 MSW를 사용하여 API를 목킹하여 서버 API 개발 없이 API를 요청한 경험이 있습니다. 추 후 next의 API Routes를 사용하여 백엔드 개발이 끝나지 않더라도 프론트엔드 개발을 무리없이 할 수 있는 방법에 대한 경험이 있습니다.",
+        },
+
+        {
+          title: "데이터 페칭",
+          description:
+            "데이터를 페칭하고 캐싱하는 기능에대해 이해하고있습니다. 서버사이드 렌더링시 프리패칭을 이용하여 서버에서 완성된 html을 렌더링하게 할 수 있습니다.",
+        },
+      ],
+    },
+    {
+      title: "supabase",
+      icon: (
+        <>
+          <span className="sr-only">supabase 로고</span>
+          {Svg("supabase", 60, 60, "fill-[#86868B]", true)}
+        </>
+      ),
+      skills: [
+        {
+          title: "database",
+          description:
+            "FireBase 기반의 데이터베이스인 Supabase를 프로젝트에 적용한 경험이 있습니다. todolist를 만드는데 사용하였습니다.",
+        },
+        {
+          title: "Prisma ( ORM )",
+          description:
+            "Prisma를 사용하여 supabase에 쿼리문을 사용한 경험이 있습니다.",
+        },
+        {
+          title: "도메인 사용",
+          description:
+            "supabase 메일 발송시스템의 한계가 프로젝트에 부적합하다고 판단하여 도메인을 구입하고 메일 서버와 프로젝트 도메인으로 사용한 경험이 있습니다. 회원가입시 메일 인증을 구현하는데에 사용하였습니다.",
+        },
+      ],
+    },
   ];
 
   return skills;

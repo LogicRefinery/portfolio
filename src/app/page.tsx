@@ -285,12 +285,14 @@ export default function Home() {
                       <li
                         key={skill.title}
                         className="basis-[calc(25%-16px)] flex items-center justify-center"
-                        onClick={() => {
-                          setIsModalOpen(true);
-                          setSelectSkill(skill);
-                        }}
                       >
-                        <div className="bg-apple-gray p-3 pt-[6px] rounded-[40px] hover:bg-orange-L2 group hover:scale-105 hover:-translate-y-2 transition-all cursor-pointer">
+                        <div
+                          className="bg-apple-gray p-3 pt-[6px] rounded-[40px] hover:bg-orange-L2 group hover:scale-105 hover:-translate-y-2 transition-all cursor-pointer"
+                          onClick={() => {
+                            setIsModalOpen(true);
+                            setSelectSkill(skill);
+                          }}
+                        >
                           <div className="bg-white rounded-[20px] p-6">
                             {skill.icon}
                           </div>
@@ -304,6 +306,7 @@ export default function Home() {
                         selectSkill={selectSkill}
                         modalController={modalController}
                       />,
+
                       document.body
                     )}
                 </div>
@@ -346,12 +349,12 @@ export default function Home() {
                         </div>
                       </div>
                       <div className=" absolute  rounded-full overflow-hidden w-[200px] h-[200px] bg-white border-[6px] border-orange-L3 left-1/2 top-1/3 translate-x-[-50%] translate-y-[-50%] ">
-                        {/* <Image
+                        <Image
                           src={"/portfolio.png"}
                           alt="포트폴리오 웹사이트 이미지"
                           width={188}
                           height={188}
-                        ></Image> */}
+                        ></Image>
                       </div>
                       <div className="bg-white h-[calc(66.6%-16px)] p-4 flex justify-end flex-col gap-2">
                         <div className="font-bold">포트폴리오 웹</div>
@@ -401,12 +404,12 @@ export default function Home() {
                         </div>
                       </div>
                       <div className=" absolute  rounded-full overflow-hidden w-[200px] h-[200px] bg-white border-[6px] border-orange-L3 left-1/2 top-1/3 translate-x-[-50%] translate-y-[-50%]">
-                        {/* <Image
+                        <Image
                           src={"/common.png"}
                           alt="공통 컴포넌트 셀렉트박스 이미지"
                           width={188}
                           height={188}
-                        ></Image> */}
+                        ></Image>
                       </div>
                       <div className="bg-white h-[calc(66.6%-16px)] p-4 flex justify-end flex-col gap-2">
                         <div className="font-bold">공통 컴포넌트</div>
@@ -456,12 +459,12 @@ export default function Home() {
                         </div>
                       </div>
                       <div className=" absolute  rounded-full overflow-hidden w-[200px] h-[200px] bg-white border-[6px] border-orange-L3 left-1/2 top-1/3 translate-x-[-50%] translate-y-[-50%]">
-                        {/* <Image
+                        <Image
                           src={"/supatodo.png"}
                           alt="수파투두 투두리스트 이미지"
                           width={188}
                           height={188}
-                        ></Image> */}
+                        ></Image>
                       </div>
                       <div className="bg-white h-[calc(66.6%-16px)] p-4 flex justify-end flex-col gap-2">
                         <div className="font-bold">supatodo</div>
@@ -517,12 +520,12 @@ export default function Home() {
                         </div>
                       </div>
                       <div className=" absolute  rounded-full overflow-hidden w-[200px] h-[200px] bg-white border-[6px] border-orange-L3 left-1/2 top-1/3 translate-x-[-50%] translate-y-[-50%]">
-                        {/* <Image
+                        <Image
                           src={"/form.png"}
                           alt="thfrom 웹사이트 이미지"
                           width={188}
                           height={188}
-                        ></Image> */}
+                        ></Image>
                       </div>
                       <div className="bg-white h-[calc(66.6%-16px)] p-4 flex justify-end flex-col gap-2">
                         <div className="font-bold">THForm</div>
@@ -575,12 +578,12 @@ export default function Home() {
                         </div>
                       </div>
                       <div className=" absolute  rounded-full overflow-hidden w-[200px] h-[200px] bg-white border-[6px] border-orange-L3 left-1/2 top-1/3 translate-x-[-50%] translate-y-[-50%]">
-                        {/* <Image
+                        <Image
                           src={"/mall.png"}
                           alt="thmall 웹사이트 이미지"
                           width={188}
                           height={188}
-                        ></Image> */}
+                        ></Image>
                       </div>
                       <div className="bg-white h-[calc(66.6%-16px)] p-4 flex justify-end flex-col gap-2">
                         <div className="font-bold">THMall</div>
@@ -636,12 +639,12 @@ export default function Home() {
                         </div>
                       </div>
                       <div className=" absolute  rounded-full overflow-hidden w-[200px] h-[200px] bg-white border-[6px] border-orange-L3 left-1/2 top-1/3 translate-x-[-50%] translate-y-[-50%]">
-                        {/* <Image
+                        <Image
                           src={"/gallery.png"}
                           alt="thgallery 웹사이트 이미지"
                           width={188}
                           height={188}
-                        ></Image> */}
+                        ></Image>
                       </div>
                       <div className="bg-white h-[calc(66.6%-16px)] p-4 flex justify-end flex-col gap-2">
                         <div className="font-bold">THGallery</div>

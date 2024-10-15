@@ -10,5 +10,5 @@ export interface SkillDetail {
 export interface SkillItem {
   title: string;
   icon: ReactNode; // JSX 아이콘을 사용하므로 ReactNode 타입을 사용
-  skills: SkillDetail[]; // 선택적으로 skills 배열이 있을 수 있음
+  skills?: SkillDetail[]; // 선택적으로 skills 배열이 있을 수 있음
 }
