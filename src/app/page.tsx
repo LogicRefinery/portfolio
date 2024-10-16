@@ -291,7 +291,7 @@ export default function Home() {
                     {skills.map((skill) => (
                       <li
                         key={skill.title}
-                        className="basis-[calc(25%-16px)] flex items-center justify-center"
+                        className="basis-[calc(25%-16px)] max-md:basis-[calc(50%-16px)] flex items-center justify-center"
                       >
                         <div
                           className="bg-apple-gray p-3 pt-[6px] rounded-[40px] hover:bg-orange-L2 group hover:scale-105 hover:-translate-y-2 transition-all cursor-pointer"
@@ -337,7 +337,7 @@ export default function Home() {
                       // <li key={item.id}>aaa</li>
                       <li
                         key={portfolio.id}
-                        className="basis-[calc(33%-8px)] pb-4 shadow-lg rounded-md overflow-hidden bg-orange-L3 relative h-[400px] flex flex-col justify-end flex-1 hover:-translate-y-4 hover:scale-105 transition-all group"
+                        className="basis-[calc(33%-8px)] max-md:basis-[calc(100%-8px)] pb-4 shadow-lg rounded-md overflow-hidden bg-orange-L3 relative h-[400px] flex flex-col justify-end flex-1 hover:-translate-y-4 hover:scale-105 transition-all group"
                       >
                         <div className=" absolute left-0 top-0 w-full h-full bg-apple-black z-10 hidden bg-opacity-50 group-hover:flex group-hover:flex-col group-hover:justify-center gap-4 text-white">
                           <div className="w-full">
@@ -366,10 +366,10 @@ export default function Home() {
                         <div className=" absolute rounded-full overflow-hidden w-[200px] h-[200px] bg-white border-[6px] border-orange-L1 left-1/2 top-1/3 translate-x-[-50%] translate-y-[-50%] ">
                           <Image
                             src={portfolio.image.url}
-                            alt={portfolio.image.description}
+                            alt={portfolio.image.alt}
                             fill
                             style={{ objectFit: "cover" }}
-                            sizes="(max-width: 768px) 50vw,(max-width: 1280px) 50vw,33vh"
+                            sizes="(max-width: 768px) 50vw,(max-width: 1280px) 50vw"
                           ></Image>
                         </div>
                         <div className="bg-white h-[calc(66.6%-16px)] p-4 flex justify-end flex-col gap-2">

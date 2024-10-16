@@ -22,7 +22,7 @@ function Modal({ selectSkill, modalController }: Props) {
   return (
     <>
       <div
-        className="modalOverlay fixed left-0 top-0 w-full h-full bg-slate-500 backdrop-blur-lg bg-opacity-50 z-10"
+        className="modalOverlay fixed left-0 top-0 w-full h-full bg-apple-black backdrop-blur-lg bg-opacity-80 z-10"
         onClick={() => {
           modalController(false);
         }}
