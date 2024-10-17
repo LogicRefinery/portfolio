@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react";
 import Nav from "./Nav";
 import { shrikhand } from "@/_fonts/fonts";
+import Link from "next/link";
 
 function Header() {
   const [isVisible, setIsVisible] = useState<boolean>(false);
@@ -46,7 +47,9 @@ function Header() {
       }`}
     >
       <div className="wrap w-[400px] md:w-[700px] xl:w-[1100px] mx-auto flex justify-between p-4">
-        <h1 className={`${shrikhand.className} text-orange-L2`}>taehyung.</h1>
+        <h1 className={`${shrikhand.className} text-orange-L2`}>
+          <Link href={"/"}>taehyung.</Link>
+        </h1>
         <Nav activeSection={activeSection}></Nav>
       </div>
     </header>
