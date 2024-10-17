@@ -6,8 +6,8 @@ export type Image = {
 };
 
 export type TroubleShooting = {
-  trouble: string;
-  solution: string;
+  trouble: string[];
+  solution: string[];
 };
 
 export type Link = { github: string; deployment: string; pdf?: string };
