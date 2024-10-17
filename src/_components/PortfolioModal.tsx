@@ -1,18 +1,29 @@
 "use client";
-import { Portfolio } from "@/_model/portfolio";
+import { Image as Thumbnail, Portfolio } from "@/_model/portfolio";
 import Link from "next/link";
 import Image from "next/image";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { FaLink, FaSquareGithub } from "react-icons/fa6";
 import { IoCloseOutline } from "react-icons/io5";
 import { FaFilePdf } from "react-icons/fa";
+import { createPortal } from "react-dom";
+import ThmubnailModal from "./ThmubnailModal";
 
 type Props = {
   selectPortfolio: Portfolio | null;
   modalController: (state: boolean) => void;
 };
 
-function Modal({ selectPortfolio, modalController }: Props) {
+function PortfolioModal({ selectPortfolio, modalController }: Props) {
+  const [thumbnail, setThumbnail] = useState<Thumbnail>({ url: "", alt: "" });
+
+  const [isThumbnailModalOpen, setIsThumbnailModalOpen] =
+    useState<boolean>(false);
+
+  const thumbnailModalController = (state: boolean) => {
+    setIsThumbnailModalOpen(state);
+  };
+
   useEffect(() => {
     document.body.style.overflow = "hidden";
 
@@ -98,6 +109,10 @@ function Modal({ selectPortfolio, modalController }: Props) {
                       <li
                         key={i}
                         className="border-[1px] border-[#e5e7eb] hover:cursor-pointer hover:opacity-70"
+                        onClick={() => {
+                          setIsThumbnailModalOpen(true);
+                          setThumbnail(image);
+                        }}
                       >
                         {
                           <Image
@@ -111,6 +126,19 @@ function Modal({ selectPortfolio, modalController }: Props) {
                         }
                       </li>
                     ))}
+                    {isThumbnailModalOpen &&
+                      createPortal(
+                        // <Modal
+                        //   selectSkill={selectSkill}
+                        //   modalController={skillModalController}
+                        // />,
+                        <ThmubnailModal
+                          thumbnail={thumbnail}
+                          thumbnailModalController={thumbnailModalController}
+                        ></ThmubnailModal>,
+
+                        document.body
+                      )}
                   </ul>
                 </li>
               </ul>
@@ -176,4 +204,4 @@ function Modal({ selectPortfolio, modalController }: Props) {
   );
 }
 
-export default Modal;
+export default PortfolioModal;

@@ -76,9 +76,9 @@ export default function Home() {
                   <div className="flex-1">
                     <ul className="flex flex-col justify-between h-full max-md: gap-4">
                       <li>
-                        <p className=" text-orange-L3 font-bold text-center text-sm flex items-center justify-center border-[1px] border-orange-L3 py-2 ">
-                          <FaStarOfLife /> &nbsp; 고용촉진 장려금 대상자 (
-                          중소기업의 경우 채용시 1년간 매월 60만원 임금 지원 )
+                        <p className=" text-orange-L3 font-bold text-sm flex items-start justify-center border-[1px] border-orange-L3 py-2 max-xl:text-xs max-xl:px-4">
+                          ⭐️ 고용촉진 장려금 대상자 ( 중소기업의 경우 채용시
+                          1년간 매월 60만원 임금 지원 )
                         </p>
                       </li>
                       <li>
