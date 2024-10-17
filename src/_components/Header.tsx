@@ -25,7 +25,11 @@ function Header() {
   };
 
   useEffect(() => {
-    activeSection === "" ? setIsVisible(false) : setIsVisible(true);
+    if (activeSection === "") {
+      setIsVisible(false);
+    } else {
+      setIsVisible(true);
+    }
   }, [activeSection]);
 
   useEffect(() => {
