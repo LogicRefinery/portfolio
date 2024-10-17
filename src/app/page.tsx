@@ -51,7 +51,7 @@ export default function Home() {
                 <div>김태형의 포트폴리오 방문을 환영합니다.</div>
               </div>
             </section>
-            <section className="py-40">
+            <section className="py-40" id="about">
               <div className="wrap w-[400px] md:w-[700px] xl:w-[1100px] mx-auto transition-all">
                 <div className="mb-12 ">
                   <h4
@@ -63,7 +63,7 @@ export default function Home() {
                     저에대해 알아보아요.
                   </p>
                 </div>
-                <div className="flex gap-x-4 mb-4">
+                <div className="flex gap-4 mb-4 max-md:flex-col">
                   <div className="flex-1 bg-slate-200 relative aspect-[1] w-full h-full rounded-2xl overflow-hidden">
                     <Image
                       src={"/profile.webp"}
@@ -74,7 +74,7 @@ export default function Home() {
                     ></Image>
                   </div>
                   <div className="flex-1">
-                    <ul className="flex flex-col justify-between h-full">
+                    <ul className="flex flex-col justify-between h-full max-md: gap-4">
                       <li>
                         <p className=" text-orange-L3 font-bold text-center text-sm flex items-center justify-center border-[1px] border-orange-L3 py-2 ">
                           <FaStarOfLife /> &nbsp; 고용촉진 장려금 대상자 (
@@ -157,7 +157,7 @@ export default function Home() {
                 </div>
               </div>
             </section>
-            <section className="py-40 bg-orange-L1">
+            <section className="py-40 bg-orange-L1" id="career">
               <div className="wrap w-[400px] md:w-[700px] xl:w-[1100px] mx-auto transition-all">
                 <div className="mb-12">
                   <h4
@@ -273,7 +273,7 @@ export default function Home() {
               </div>
             </section>
 
-            <section className="py-40">
+            <section className="py-40" id="skills">
               <div className="wrap w-[400px] md:w-[700px] xl:w-[1100px] mx-auto transition-all">
                 <div className="mb-12">
                   <h4
@@ -319,7 +319,7 @@ export default function Home() {
                 </div>
               </div>
             </section>
-            <section className="py-40">
+            <section className="py-40" id="projects">
               <div className="wrap w-[400px] md:w-[700px] xl:w-[1100px] mx-auto ">
                 <div className="mb-12">
                   <h4
@@ -378,369 +378,9 @@ export default function Home() {
                           <div className="text-sm overflow-hidden text-ellipsis whitespace-nowrap">
                             {portfolio.description}
                           </div>
-                          {/* <div>
-                            <ul className="flex gap-2 py-4">
-                              <li>
-                                {Svg("next", 40, 40, "fill-[#1d1d1f]", false)}
-                              </li>
-                              <li>
-                                {Svg("ts", 40, 40, "fill-[#007acc]", false)}
-                              </li>
-                              <li>
-                                {Svg(
-                                  "tailwind",
-                                  40,
-                                  40,
-                                  "fill-[#38bdf8]",
-                                  false
-                                )}
-                              </li>
-                            </ul>
-                          </div> */}
                         </div>
                       </li>
                     ))}
-                    {/* <li className="basis-[calc(33%-8px)] pb-4 shadow-lg rounded-md overflow-hidden bg-orange-L3 relative h-[500px] flex flex-col justify-end flex-1 hover:-translate-y-4 hover:scale-105 transition-all group">
-                      <div className=" absolute left-0 top-0 w-full h-full bg-apple-black z-10 hidden bg-opacity-50 group-hover:flex group-hover:flex-col group-hover:justify-center gap-4 text-white">
-                        <div className="w-full">
-                          <button
-                            className="rounded-md w-1/2 py-2 px-4 block m-auto bg-orange-L3"
-                            onClick={() => {
-                              portfolioModalController(true);
-                            }}
-                          >
-                            상세보기
-                          </button>
-                        </div>
-                        <div className="w-full">
-                          <Link
-                            href={"https://github.com/LogicRefinery/portfolio"}
-                            target="_blank"
-                            className="rounded-md w-1/2 py-2 px-4 block m-auto bg-orange-L3  text-center"
-                          >
-                            github
-                          </Link>
-                        </div>
-                      </div>
-                      <div className=" absolute  rounded-full overflow-hidden w-[200px] h-[200px] bg-white border-[6px] border-orange-L3 left-1/2 top-1/3 translate-x-[-50%] translate-y-[-50%] ">
-                        <Image
-                          src={"/portfolioImg.png"}
-                          alt="포트폴리오 웹사이트 이미지"
-                          width={188}
-                          height={188}
-                        ></Image>
-                      </div>
-                      <div className="bg-white h-[calc(66.6%-16px)] p-4 flex justify-end flex-col gap-2">
-                        <div className="font-bold">포트폴리오 웹</div>
-
-                        <div className="text-sm text-apple-gray mt-[-8px]">
-                          2024.10.10 - 진행중
-                        </div>
-                        <div className="text-sm">
-                          프론트엔드 개발자로서의 이력을 표현한 포트폴리오
-                          웹입니다.
-                        </div>
-                        <div>
-                          <ul className="flex gap-2 py-4">
-                            <li>
-                              {Svg("next", 40, 40, "fill-[#1d1d1f]", false)}
-                            </li>
-                            <li>
-                              {Svg("ts", 40, 40, "fill-[#007acc]", false)}
-                            </li>
-                            <li>
-                              {Svg("tailwind", 40, 40, "fill-[#38bdf8]", false)}
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                    </li>
-                    <li className="basis-[calc(33%-8px)] pb-4 shadow-lg rounded-md overflow-hidden bg-orange-L3 relative h-[500px] flex flex-col justify-end flex-1 hover:-translate-y-4 hover:scale-105 transition-all group">
-                      <div className=" absolute left-0 top-0 w-full h-full bg-apple-black z-10 hidden bg-opacity-50 group-hover:flex group-hover:flex-col group-hover:justify-center gap-4 text-white">
-                        <div className="w-full">
-                          <button
-                            className="rounded-md w-1/2 py-2 px-4 block m-auto bg-orange-L3"
-                            onClick={() => {
-                              // setIsModalOpen(true);
-                            }}
-                          >
-                            상세보기
-                          </button>
-                        </div>
-                        <div className="w-full">
-                          <Link
-                            href={"https://github.com/LogicRefinery/components"}
-                            target="_blank"
-                            className="rounded-md w-1/2 py-2 px-4 block m-auto bg-orange-L3  text-center"
-                          >
-                            github
-                          </Link>
-                        </div>
-                      </div>
-                      <div className=" absolute  rounded-full overflow-hidden w-[200px] h-[200px] bg-white border-[6px] border-orange-L3 left-1/2 top-1/3 translate-x-[-50%] translate-y-[-50%]">
-                        <Image
-                          src={"/commonImg.png"}
-                          alt="공통 컴포넌트 셀렉트박스 이미지"
-                          width={188}
-                          height={188}
-                        ></Image>
-                      </div>
-                      <div className="bg-white h-[calc(66.6%-16px)] p-4 flex justify-end flex-col gap-2">
-                        <div className="font-bold">공통 컴포넌트</div>
-                        <div className="text-sm text-apple-gray mt-[-8px]">
-                          2024.09.13 - 2024.09.15
-                        </div>
-                        <div className="text-sm">
-                          Headless UI 패턴을 사용하여 재사용 가능한 셀렉트
-                          박스를 구현했습니다.
-                        </div>
-                        <div>
-                          <ul className="flex gap-2 py-4">
-                            <li>
-                              {Svg("next", 40, 40, "fill-[#1d1d1f]", false)}
-                            </li>
-                            <li>
-                              {Svg("ts", 40, 40, "fill-[#007acc]", false)}
-                            </li>
-
-                            <li>
-                              {Svg("tailwind", 40, 40, "fill-[#38bdf8]", false)}
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                    </li>
-                    <li className="basis-[calc(33%-8px)] pb-4 shadow-lg rounded-md overflow-hidden bg-orange-L3 relative h-[500px] flex flex-col justify-end flex-1 hover:-translate-y-4 hover:scale-105 transition-all group">
-                      <div className=" absolute left-0 top-0 w-full h-full bg-apple-black z-10 hidden bg-opacity-50 group-hover:flex group-hover:flex-col group-hover:justify-center gap-4 text-white">
-                        <div className="w-full">
-                          <button
-                            className="rounded-md w-1/2 py-2 px-4 block m-auto bg-orange-L3"
-                            onClick={() => {
-                              console.log("github 클릭");
-                            }}
-                          >
-                            상세보기
-                          </button>
-                        </div>
-                        <div className="w-full">
-                          <Link
-                            href={"https://github.com/LogicRefinery/supatodo"}
-                            target="_blank"
-                            className="rounded-md w-1/2 py-2 px-4 block m-auto bg-orange-L3  text-center"
-                          >
-                            github
-                          </Link>
-                        </div>
-                      </div>
-                      <div className=" absolute  rounded-full overflow-hidden w-[200px] h-[200px] bg-white border-[6px] border-orange-L3 left-1/2 top-1/3 translate-x-[-50%] translate-y-[-50%]">
-                        <Image
-                          src={"/supatodoImg.png"}
-                          alt="수파투두 투두리스트 이미지"
-                          width={188}
-                          height={188}
-                        ></Image>
-                      </div>
-                      <div className="bg-white h-[calc(66.6%-16px)] p-4 flex justify-end flex-col gap-2">
-                        <div className="font-bold">supatodo</div>
-                        <div className="text-sm text-apple-gray mt-[-8px]">
-                          2024.09.02 - 2024.09.10
-                        </div>
-                        <div className="text-sm">
-                          supabase, prisma를 활용하여 회원가입 기능, 이메일 인증
-                          기능, 데이터베이스 CRUD를 구현한 TODOLIST 입니다.
-                        </div>
-                        <div>
-                          <ul className="flex gap-2 py-4">
-                            <li>
-                              {Svg("next", 40, 40, "fill-[#1d1d1f]", false)}
-                            </li>
-                            <li>
-                              {Svg("ts", 40, 40, "fill-[#007acc]", false)}
-                            </li>
-                            <li>
-                              <SiPrisma size={40} />
-                            </li>
-                            <li>
-                              <RiSupabaseLine size={40}></RiSupabaseLine>
-                            </li>
-                            <li>
-                              {Svg("tailwind", 40, 40, "fill-[#38bdf8]", false)}
-                            </li>
-                            <li className="">Context Api</li>
-                          </ul>
-                        </div>
-                      </div>
-                    </li>
-                    <li className="basis-[calc(33%-8px)] pb-4 shadow-lg rounded-md overflow-hidden bg-orange-L3 relative h-[500px] flex flex-col justify-end flex-1 hover:-translate-y-4 hover:scale-105 transition-all group">
-                      <div className=" absolute left-0 top-0 w-full h-full bg-apple-black z-10 hidden bg-opacity-50 group-hover:flex group-hover:flex-col group-hover:justify-center gap-4 text-white">
-                        <div className="w-full">
-                          <button
-                            className="rounded-md w-1/2 py-2 px-4 block m-auto bg-orange-L3"
-                            onClick={() => {
-                              console.log("github 클릭");
-                            }}
-                          >
-                            상세보기
-                          </button>
-                        </div>
-                        <div className="w-full">
-                          <Link
-                            href={"https://github.com/LogicRefinery/THForm"}
-                            target="_blank"
-                            className="rounded-md w-1/2 py-2 px-4 block m-auto bg-orange-L3  text-center"
-                          >
-                            github
-                          </Link>
-                        </div>
-                      </div>
-                      <div className=" absolute  rounded-full overflow-hidden w-[200px] h-[200px] bg-white border-[6px] border-orange-L3 left-1/2 top-1/3 translate-x-[-50%] translate-y-[-50%]">
-                        <Image
-                          src={"/formImg.png"}
-                          alt="thfrom 웹사이트 이미지"
-                          width={188}
-                          height={188}
-                        ></Image>
-                      </div>
-                      <div className="bg-white h-[calc(66.6%-16px)] p-4 flex justify-end flex-col gap-2">
-                        <div className="font-bold">THForm</div>
-                        <div className="text-sm text-apple-gray mt-[-8px]">
-                          2024.06.03 - 2024.06.06
-                        </div>
-                        <div className="text-sm">
-                          설문조사 폼을 제작하고 배포하기위해 폼을 생성하는
-                          웹사이트입니다. 주요 기능으로는 드래그앤 드롭 기능이
-                          있습니다.
-                        </div>
-                        <div>
-                          <ul className="flex gap-2 py-4">
-                            <li>
-                              {Svg("react", 40, 40, "fill-[#61DAFB]", false)}
-                            </li>
-                            <li>
-                              {Svg("ts", 40, 40, "fill-[#007acc]", false)}
-                            </li>
-                            <li>
-                              {Svg("redux", 40, 40, "fill-[#764abc]", false)}
-                            </li>
-                            <li>
-                              {Svg("styledComponents", 40, 40, "", false)}
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                    </li>
-                    <li className="basis-[calc(33%-8px)] pb-4 shadow-lg rounded-md overflow-hidden bg-orange-L3 relative h-[500px] flex flex-col justify-end flex-1 hover:-translate-y-4 hover:scale-105 transition-all group">
-                      <div className=" absolute left-0 top-0 w-full h-full bg-apple-black z-10 hidden bg-opacity-50 group-hover:flex group-hover:flex-col group-hover:justify-center gap-4 text-white">
-                        <div className="w-full">
-                          <button
-                            className="rounded-md w-1/2 py-2 px-4 block m-auto bg-orange-L3"
-                            onClick={() => {
-                              console.log("github 클릭");
-                            }}
-                          >
-                            상세보기
-                          </button>
-                        </div>
-                        <div className="w-full">
-                          <Link
-                            href={"https://github.com/LogicRefinery/todayhouse"}
-                            target="_blank"
-                            className="rounded-md w-1/2 py-2 px-4 block m-auto bg-orange-L3  text-center"
-                          >
-                            github
-                          </Link>
-                        </div>
-                      </div>
-                      <div className=" absolute  rounded-full overflow-hidden w-[200px] h-[200px] bg-white border-[6px] border-orange-L3 left-1/2 top-1/3 translate-x-[-50%] translate-y-[-50%]">
-                        <Image
-                          src={"/mallImg.png"}
-                          alt="thmall 웹사이트 이미지"
-                          width={188}
-                          height={188}
-                        ></Image>
-                      </div>
-                      <div className="bg-white h-[calc(66.6%-16px)] p-4 flex justify-end flex-col gap-2">
-                        <div className="font-bold">THMall</div>
-                        <div className="text-sm text-apple-gray mt-[-8px]">
-                          2024.03.01 - 2024.03.31
-                        </div>
-                        <div className="text-sm">
-                          어드민 사용자의 카테고리, 상품 CRUD 기능으로 등록된
-                          상품을 사용자 페이지에서 확인할 수 있습니다.
-                        </div>
-                        <div>
-                          <ul className="flex gap-2 py-4">
-                            <li>
-                              {Svg("next", 40, 40, "fill-[#1d1d1f]", false)}
-                            </li>
-                            <li>
-                              {Svg("ts", 40, 40, "fill-[#007acc]", false)}
-                            </li>
-                            <li>
-                              <SiReacthookform size={40}></SiReacthookform>
-                            </li>
-                            <li>
-                              {Svg("lodash", 40, 40, "fill-[#3492ff]", false)}
-                            </li>
-                            <li>{Svg("reactQuery", 40, 40, "", false)}</li>
-                            <li>
-                              {Svg("scss", 40, 40, "fill-[#CB6699]", false)}
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                    </li>
-                    <li className="basis-[calc(33%-8px)] pb-4 shadow-lg rounded-md overflow-hidden bg-orange-L3 relative h-[500px] flex flex-col justify-end flex-1 hover:-translate-y-4 hover:scale-105 transition-all group">
-                      <div className=" absolute left-0 top-0 w-full h-full bg-apple-black z-10 hidden bg-opacity-50 group-hover:flex group-hover:flex-col group-hover:justify-center gap-4 text-white">
-                        <div className="w-full">
-                          <button
-                            className="rounded-md w-1/2 py-2 px-4 block m-auto bg-orange-L3"
-                            onClick={() => {
-                              console.log("github 클릭");
-                            }}
-                          >
-                            상세보기
-                          </button>
-                        </div>
-                        <div className="w-full">
-                          <Link
-                            href={"https://github.com/LogicRefinery/THGallery"}
-                            target="_blank"
-                            className="rounded-md w-1/2 py-2 px-4 block m-auto bg-orange-L3  text-center"
-                          >
-                            github
-                          </Link>
-                        </div>
-                      </div>
-                      <div className=" absolute  rounded-full overflow-hidden w-[200px] h-[200px] bg-white border-[6px] border-orange-L3 left-1/2 top-1/3 translate-x-[-50%] translate-y-[-50%]">
-                        <Image
-                          src={"/galleryImg.png"}
-                          alt="thgallery 웹사이트 이미지"
-                          width={188}
-                          height={188}
-                        ></Image>
-                      </div>
-                      <div className="bg-white h-[calc(66.6%-16px)] p-4 flex justify-end flex-col gap-2">
-                        <div className="font-bold">THGallery</div>
-                        <div className="text-sm text-apple-gray mt-[-8px]">
-                          2024.04.23 - 2024.04.29
-                        </div>
-                        <div className="text-sm">
-                          unsplash API를 활용하여 사진을 검색하는 기능과 페이징
-                          기능 및 북마크 기능을 구현했습니다.
-                        </div>
-                        <div>
-                          <ul className="flex gap-2 py-4">
-                            <li>
-                              {Svg("next", 40, 40, "fill-[#1d1d1f]", false)}
-                            </li>
-                            <li>
-                              {Svg("scss", 40, 40, "fill-[#CB6699]", false)}
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                    </li> */}
                   </ul>
                   {isPortfolioModalOpen &&
                     createPortal(
