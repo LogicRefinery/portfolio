@@ -1,5 +1,5 @@
 "use client";
-import { Image as Thumbnail, Portfolio } from "@/_model/portfolio";
+import { Image as Thumbnail } from "@/_model/portfolio";
 import Image from "next/image";
 import React from "react";
 import { IoCloseOutline } from "react-icons/io5";
