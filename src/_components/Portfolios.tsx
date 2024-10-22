@@ -45,6 +45,18 @@ export const portfolios: Portfolio[] = [
         trouble: [
           "웹사이트 성능의 문제 라이트하우스 점수..",
           "혹은 이제 개발할 애플 인터렉션에서 발생할 문제",
+          "테일윈드 showSection_0 showSection-0 언더스코어 문제.. 언더스코어 사용하면 안되는듯",
+          "메뉴 오파시티 효과만 작성했을 때 전체 페이지에 스크롤 이벤트가 걸린것을 활용하여 프롭스로 섹션을 구분 했던 내용",
+
+          // 예제 코드 ..
+          // <div className="group is-published">
+          //   <div className="hidden group-[.is-published]:block group-[.is-published]:text-red-700">
+          //     Published
+          //     <div className="hidden group-[.is-published]:block group-[.is-published]:text-blue-700">
+          //       뻒킹 !!
+          //     </div>
+          //   </div>
+          // </div>,
         ],
         solution: ["이걸 해결할 이야기", "이걸 해결할 이야기"],
       },

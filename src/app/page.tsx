@@ -1,6 +1,5 @@
 "use client";
 import Header from "@/_components/Header";
-import { FaStarOfLife } from "react-icons/fa6";
 import { IoIosCall } from "react-icons/io";
 import { MdOutlineMail } from "react-icons/md";
 import { BiSolidSchool } from "react-icons/bi";
@@ -12,14 +11,508 @@ import Image from "next/image";
 import Link from "next/link";
 import { createPortal } from "react-dom";
 import Modal from "@/_components/Modal";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { SkillItem } from "@/_model/skills";
 import PortfolioModal from "@/_components/PortfolioModal";
 import { skills } from "@/_components/Skills";
 import { portfolios } from "@/_components/Portfolios";
 import { Portfolio } from "@/_model/portfolio";
 
+type AnimationOption = [number, number, { start: number; end: number }?];
+
+type AnimationKinds = {
+  messageA_opacity_in: AnimationOption;
+  messageB_opacity_in: AnimationOption;
+  messageC_opacity_in: AnimationOption;
+  messageA_opacity_out: AnimationOption;
+  messageB_opacity_out: AnimationOption;
+  messageC_opacity_out: AnimationOption;
+  messageA_translateY_in: AnimationOption;
+  messageB_translateY_in: AnimationOption;
+  messageC_translateY_in: AnimationOption;
+  messageA_translateY_out: AnimationOption;
+  messageB_translateY_out: AnimationOption;
+  messageC_translateY_out: AnimationOption;
+};
+
+type AnimationElements = Record<string, HTMLElement | null>;
+
+type SectionInfo = {
+  type: "sticky" | "normal";
+  multiply: number; //뷰포트의 몇배 높이로 섹션 높이를 정할지 곱하는 수
+  sectionHeight: number; //각 섹션의 임의로 정한 높이 ( 애니메이션이 진행될 스크롤 높이 )
+  sectionElement: HTMLElement | null;
+  animationElements: AnimationElements | null;
+  animations: AnimationKinds;
+};
+
+const initialInfo: SectionInfo[] = [
+  {
+    type: "sticky",
+    multiply: 5, //뷰포트의 몇배 높이로 섹션 높이를 정할지 곱하는 수
+    sectionHeight: 0, //각 섹션의 임의로 정한 높이 ( 애니메이션이 진행될 스크롤 높이 )
+    sectionElement: null,
+    animationElements: null,
+    animations: {
+      messageA_opacity_in: [0, 1, { start: 0, end: 0.07 }],
+      messageB_opacity_in: [0, 1, { start: 0.28, end: 0.35 }],
+      messageC_opacity_in: [0, 1, { start: 0.56, end: 0.63 }],
+      messageA_opacity_out: [1, 0, { start: 0.14, end: 0.21 }],
+      messageB_opacity_out: [1, 0, { start: 0.42, end: 0.49 }],
+      messageC_opacity_out: [1, 0, { start: 0.7, end: 0.77 }],
+      messageA_translateY_in: [20, 0, { start: 0, end: 0.07 }],
+      messageB_translateY_in: [20, 0, { start: 0.28, end: 0.35 }],
+      messageC_translateY_in: [20, 0, { start: 0.56, end: 0.63 }],
+      messageA_translateY_out: [0, -20, { start: 0.14, end: 0.21 }],
+      messageB_translateY_out: [0, -20, { start: 0.42, end: 0.49 }],
+      messageC_translateY_out: [0, -60, { start: 0.7, end: 1 }],
+    },
+  },
+  {
+    type: "normal",
+    multiply: 5, //뷰포트의 몇배 높이로 섹션 높이를 정할지 곱하는 수
+    sectionHeight: 0, //각 섹션의 임의로 정한 높이 ( 애니메이션이 진행될 스크롤 높이 )
+    sectionElement: null,
+    animationElements: null,
+    animations: {
+      messageA_opacity_in: [0, 1, { start: 0, end: 0.1 }],
+      messageB_opacity_in: [0, 1, { start: 0.3, end: 0.4 }],
+      messageC_opacity_in: [0, 1, { start: 0.6, end: 0.7 }],
+      messageA_opacity_out: [1, 0, { start: 0.2, end: 0.3 }],
+      messageB_opacity_out: [1, 0, { start: 0.5, end: 0.6 }],
+      messageC_opacity_out: [1, 0, { start: 0.8, end: 0.9 }],
+      messageA_translateY_in: [20, 0, { start: 0, end: 0.07 }],
+      messageB_translateY_in: [20, 0, { start: 0.28, end: 0.35 }],
+      messageC_translateY_in: [20, 0, { start: 0.56, end: 0.63 }],
+      messageA_translateY_out: [0, -20, { start: 0.14, end: 0.21 }],
+      messageB_translateY_out: [0, -20, { start: 0.42, end: 0.49 }],
+      messageC_translateY_out: [0, -20, { start: 0.7, end: 0.77 }],
+    },
+  },
+  {
+    type: "normal",
+    multiply: 5, //뷰포트의 몇배 높이로 섹션 높이를 정할지 곱하는 수
+    sectionHeight: 0, //각 섹션의 임의로 정한 높이 ( 애니메이션이 진행될 스크롤 높이 )
+
+    sectionElement: null,
+    animationElements: null,
+    animations: {
+      messageA_opacity_in: [0, 1, { start: 0, end: 0.1 }],
+      messageB_opacity_in: [0, 1, { start: 0.3, end: 0.4 }],
+      messageC_opacity_in: [0, 1, { start: 0.6, end: 0.7 }],
+      messageA_opacity_out: [1, 0, { start: 0.2, end: 0.3 }],
+      messageB_opacity_out: [1, 0, { start: 0.5, end: 0.6 }],
+      messageC_opacity_out: [1, 0, { start: 0.8, end: 0.9 }],
+      messageA_translateY_in: [20, 0, { start: 0, end: 0.07 }],
+      messageB_translateY_in: [20, 0, { start: 0.28, end: 0.35 }],
+      messageC_translateY_in: [20, 0, { start: 0.56, end: 0.63 }],
+      messageA_translateY_out: [0, -20, { start: 0.14, end: 0.21 }],
+      messageB_translateY_out: [0, -20, { start: 0.42, end: 0.49 }],
+      messageC_translateY_out: [0, -20, { start: 0.7, end: 0.77 }],
+    },
+  },
+  {
+    type: "normal",
+    multiply: 5, //뷰포트의 몇배 높이로 섹션 높이를 정할지 곱하는 수
+    sectionHeight: 0, //각 섹션의 임의로 정한 높이 ( 애니메이션이 진행될 스크롤 높이 )
+
+    sectionElement: null,
+    animationElements: null,
+    animations: {
+      messageA_opacity_in: [0, 1, { start: 0, end: 0.7 }],
+      messageB_opacity_in: [0, 1, { start: 2.8, end: 3.5 }],
+      messageC_opacity_in: [0, 1, { start: 5.6, end: 6.3 }],
+      messageA_opacity_out: [1, 0, { start: 1.4, end: 2.1 }],
+      messageB_opacity_out: [1, 0, { start: 4.2, end: 4.9 }],
+      messageC_opacity_out: [1, 0, { start: 7.0, end: 7.7 }],
+      messageA_translateY_in: [20, 0, { start: 0, end: 0.07 }],
+      messageB_translateY_in: [20, 0, { start: 0.28, end: 0.35 }],
+      messageC_translateY_in: [20, 0, { start: 0.56, end: 0.63 }],
+      messageA_translateY_out: [0, -20, { start: 0.14, end: 0.21 }],
+      messageB_translateY_out: [0, -20, { start: 0.42, end: 0.49 }],
+      messageC_translateY_out: [0, -20, { start: 0.7, end: 0.77 }],
+    },
+  },
+  {
+    type: "normal",
+    multiply: 5, //뷰포트의 몇배 높이로 섹션 높이를 정할지 곱하는 수
+    sectionHeight: 0, //각 섹션의 임의로 정한 높이 ( 애니메이션이 진행될 스크롤 높이 )
+    sectionElement: null,
+    animationElements: null,
+    animations: {
+      messageA_opacity_in: [0, 1, { start: 0, end: 0.1 }],
+      messageB_opacity_in: [0, 1, { start: 0.3, end: 0.4 }],
+      messageC_opacity_in: [0, 1, { start: 0.6, end: 0.7 }],
+      messageA_opacity_out: [1, 0, { start: 0.2, end: 0.3 }],
+      messageB_opacity_out: [1, 0, { start: 0.5, end: 0.6 }],
+      messageC_opacity_out: [1, 0, { start: 0.8, end: 0.9 }],
+      messageA_translateY_in: [20, 0, { start: 0, end: 0.07 }],
+      messageB_translateY_in: [20, 0, { start: 0.28, end: 0.35 }],
+      messageC_translateY_in: [20, 0, { start: 0.56, end: 0.63 }],
+      messageA_translateY_out: [0, -20, { start: 0.14, end: 0.21 }],
+      messageB_translateY_out: [0, -20, { start: 0.42, end: 0.49 }],
+      messageC_translateY_out: [0, -20, { start: 0.7, end: 0.77 }],
+    },
+  },
+  {
+    type: "sticky",
+    multiply: 5, //뷰포트의 몇배 높이로 섹션 높이를 정할지 곱하는 수
+    sectionHeight: 0, //각 섹션의 임의로 정한 높이 ( 애니메이션이 진행될 스크롤 높이 )
+    sectionElement: null,
+    animationElements: null,
+    animations: {
+      messageA_opacity_in: [0, 1, { start: 0, end: 0.07 }],
+      messageB_opacity_in: [0, 1, { start: 0.28, end: 0.35 }],
+      messageC_opacity_in: [0, 1, { start: 0.56, end: 0.63 }],
+
+      messageA_opacity_out: [1, 0, { start: 0.14, end: 0.21 }],
+      messageB_opacity_out: [1, 0, { start: 0.42, end: 0.49 }],
+      messageC_opacity_out: [1, 0, { start: 0.7, end: 0.77 }],
+
+      messageA_translateY_in: [20, 0, { start: 0, end: 0.07 }],
+      messageB_translateY_in: [20, 0, { start: 0.28, end: 0.35 }],
+      messageC_translateY_in: [20, 0, { start: 0.56, end: 0.63 }],
+      messageA_translateY_out: [0, -20, { start: 0.14, end: 0.21 }],
+      messageB_translateY_out: [0, -20, { start: 0.42, end: 0.49 }],
+      messageC_translateY_out: [0, 0, { start: 0.7, end: 0.77 }],
+    },
+  },
+];
+
 export default function Home() {
+  const article = useRef<HTMLElement | null>(null);
+  const sectionInfo = useRef<SectionInfo[]>(initialInfo);
+  const yOffset = useRef<number>(0); // 현재 스크롤의 높이
+  const sumPrevSectionHeight = useRef<number>(0); // 지나간 섹션들의 높이의 합
+  const activeSection = useRef<number>(0); // 현재 활성화된 섹션
+  const [activeSectionClassName, setActiveSectionClassName] =
+    useState<string>("showSection-0");
+
+  const setSectionInfo = () => {
+    const sections = article.current?.querySelectorAll(".appleSection"); //모든 섹션 가져오기
+
+    sectionInfo.current = sectionInfo.current.map((info, i) => {
+      const sectionHeight =
+        info.type === "sticky"
+          ? info.multiply * window.innerHeight
+          : sections && sections[i]
+          ? sections[i].clientHeight
+          : 0; // normal 타입은 요소의 원래 높이 사용
+
+      const section = sections ? (sections[i] as HTMLElement) : null;
+      let animationElements: AnimationElements | null = null;
+
+      if (section) section.style.setProperty("height", `${sectionHeight}px`);
+
+      if (i < 1 || i > 4) {
+        if (sections)
+          animationElements = {
+            messageA: sections[i].querySelector(".main-message-a"),
+            messageB: sections[i].querySelector(".main-message-b"),
+            messageC: sections[i].querySelector(".main-message-c"),
+          };
+      }
+      return {
+        ...info,
+        animationElements,
+        sectionElement: section,
+        sectionHeight: sectionHeight,
+      };
+    });
+  };
+
+  const animationCalculator = (
+    animation: AnimationOption,
+    activeSectionScrollProgress: number
+  ) => {
+    let value = 0;
+    const activeSectionScrollHeight =
+      sectionInfo.current[activeSection.current].sectionHeight; // 현재 섹션의 전체 높이
+
+    const scrollRatio = activeSectionScrollProgress / activeSectionScrollHeight; //현재 섹션에서 스크롤된 비율 ( 스크롤 된 높이 / 섹션 전체 높이 ) 0 ~ 1 사이의 소수점을 반환
+
+    if (animation.length === 3) {
+      // start, end 사이 애니메이션 구현
+      const startAnimationPixel =
+        (animation[2]?.start as number) * activeSectionScrollHeight;
+
+      const endAnimationPixel =
+        (animation[2]?.end as number) * activeSectionScrollHeight;
+
+      const animationFrame = endAnimationPixel - startAnimationPixel;
+
+      if (
+        activeSectionScrollProgress >= startAnimationPixel &&
+        activeSectionScrollProgress <= endAnimationPixel
+      ) {
+        value =
+          ((activeSectionScrollProgress - startAnimationPixel) /
+            animationFrame) *
+            (animation[1] - animation[0]) +
+          animation[0];
+      } else if (activeSectionScrollProgress < startAnimationPixel) {
+        value = animation[0];
+      } else if (activeSectionScrollProgress > endAnimationPixel) {
+        value = animation[1];
+      }
+    } else {
+      value = scrollRatio * (animation[1] - animation[0]) + animation[0];
+    }
+
+    return value;
+  };
+
+  const animationPlayer = () => {
+    const animationElements =
+      sectionInfo.current[activeSection.current].animationElements; //애니메이션을 적용할 HTML 요소를 개진 객체
+
+    const animation = sectionInfo.current[activeSection.current].animations; //적용할 애니메이션을 가진 객체
+
+    const activeSectionScrollProgress =
+      yOffset.current - sumPrevSectionHeight.current; //현재 섹션에서 스크롤된 높이 ( 전체 스크롤 - 지나간 섹션의 높이 ) 현재 섹션에서 몇 px 움직였는비 반환
+
+    const activeSectionHeight =
+      sectionInfo.current[activeSection.current].sectionHeight;
+
+    const activeSectionScrollRatio =
+      activeSectionScrollProgress / activeSectionHeight;
+
+    switch (activeSection.current) {
+      case 0:
+        if (
+          animationElements &&
+          animationElements["messageA"] &&
+          animationElements["messageB"] &&
+          animationElements["messageC"]
+        ) {
+          if (activeSectionScrollRatio <= 0.1) {
+            animationElements[
+              "messageA"
+            ].style.opacity = `${animationCalculator(
+              animation.messageA_opacity_in,
+              activeSectionScrollProgress
+            )}`;
+            animationElements[
+              "messageA"
+            ].style.transform = `translate3d(-50%,${animationCalculator(
+              animation.messageA_translateY_in,
+              activeSectionScrollProgress
+            )}%,0)`;
+          } else {
+            animationElements[
+              "messageA"
+            ].style.opacity = `${animationCalculator(
+              animation.messageA_opacity_out,
+              activeSectionScrollProgress
+            )}`;
+            animationElements[
+              "messageA"
+            ].style.transform = `translate3d(-50%,${animationCalculator(
+              animation.messageA_translateY_out,
+              activeSectionScrollProgress
+            )}%,0)`;
+          }
+
+          if (activeSectionScrollRatio <= 0.4) {
+            animationElements[
+              "messageB"
+            ].style.opacity = `${animationCalculator(
+              animation.messageB_opacity_in,
+              activeSectionScrollProgress
+            )}`;
+            animationElements[
+              "messageB"
+            ].style.transform = `translate3d(-50%,${animationCalculator(
+              animation.messageB_translateY_in,
+              activeSectionScrollProgress
+            )}%,0)`;
+          } else {
+            animationElements[
+              "messageB"
+            ].style.opacity = `${animationCalculator(
+              animation.messageB_opacity_out,
+              activeSectionScrollProgress
+            )}`;
+            animationElements[
+              "messageB"
+            ].style.transform = `translate3d(-50%,${animationCalculator(
+              animation.messageB_translateY_out,
+              activeSectionScrollProgress
+            )}%,0)`;
+          }
+
+          if (activeSectionScrollRatio <= 0.66) {
+            animationElements[
+              "messageC"
+            ].style.opacity = `${animationCalculator(
+              animation.messageC_opacity_in,
+              activeSectionScrollProgress
+            )}`;
+            animationElements[
+              "messageC"
+            ].style.transform = `translate3d(-50%,${animationCalculator(
+              animation.messageC_translateY_in,
+              activeSectionScrollProgress
+            )}%,0)`;
+          } else {
+            animationElements[
+              "messageC"
+            ].style.transform = `translate3d(-50%,${animationCalculator(
+              animation.messageC_translateY_out,
+              activeSectionScrollProgress
+            )}vh,0)`;
+          }
+        }
+
+        break;
+      case 1:
+        break;
+      case 2:
+        break;
+      case 3:
+        break;
+      case 4:
+        break;
+      case 5:
+        if (
+          animationElements &&
+          animationElements["messageA"] &&
+          animationElements["messageB"] &&
+          animationElements["messageC"]
+        ) {
+          if (activeSectionScrollRatio <= 0.1) {
+            animationElements[
+              "messageA"
+            ].style.opacity = `${animationCalculator(
+              animation.messageA_opacity_in,
+              activeSectionScrollProgress
+            )}`;
+            animationElements[
+              "messageA"
+            ].style.transform = `translate3d(-50%,${animationCalculator(
+              animation.messageA_translateY_in,
+              activeSectionScrollProgress
+            )}%,0)`;
+          } else {
+            animationElements[
+              "messageA"
+            ].style.opacity = `${animationCalculator(
+              animation.messageA_opacity_out,
+              activeSectionScrollProgress
+            )}`;
+            animationElements[
+              "messageA"
+            ].style.transform = `translate3d(-50%,${animationCalculator(
+              animation.messageA_translateY_out,
+              activeSectionScrollProgress
+            )}%,0)`;
+          }
+
+          if (activeSectionScrollRatio <= 0.4) {
+            animationElements[
+              "messageB"
+            ].style.opacity = `${animationCalculator(
+              animation.messageB_opacity_in,
+              activeSectionScrollProgress
+            )}`;
+            animationElements[
+              "messageB"
+            ].style.transform = `translate3d(-50%,${animationCalculator(
+              animation.messageB_translateY_in,
+              activeSectionScrollProgress
+            )}%,0)`;
+          } else {
+            animationElements[
+              "messageB"
+            ].style.opacity = `${animationCalculator(
+              animation.messageB_opacity_out,
+              activeSectionScrollProgress
+            )}`;
+            animationElements[
+              "messageB"
+            ].style.transform = `translate3d(-50%,${animationCalculator(
+              animation.messageB_translateY_out,
+              activeSectionScrollProgress
+            )}%,0)`;
+          }
+
+          if (activeSectionScrollRatio <= 0.66) {
+            animationElements[
+              "messageC"
+            ].style.opacity = `${animationCalculator(
+              animation.messageC_opacity_in,
+              activeSectionScrollProgress
+            )}`;
+            animationElements[
+              "messageC"
+            ].style.transform = `translate3d(-50%,${animationCalculator(
+              animation.messageC_translateY_in,
+              activeSectionScrollProgress
+            )}%,0)`;
+          } else {
+            animationElements[
+              "messageC"
+            ].style.transform = `translate3d(-50%,${animationCalculator(
+              animation.messageC_translateY_out,
+              activeSectionScrollProgress
+            )}%,0)`;
+          }
+        }
+        break;
+
+      default:
+        break;
+    }
+  };
+
+  const handleScroll = () => {
+    yOffset.current = scrollY;
+    sumPrevSectionHeight.current = 0;
+
+    for (let i = 0; i < activeSection.current; i++) {
+      //지니간 섹션의 합을 더하는 로직
+      sumPrevSectionHeight.current += sectionInfo.current[i].sectionHeight;
+    }
+
+    const hasScrolledPastActiveSection =
+      yOffset.current >
+      sumPrevSectionHeight.current +
+        sectionInfo.current[activeSection.current].sectionHeight;
+
+    if (hasScrolledPastActiveSection) {
+      //스크롤 할때마다 현재 스크롤의 높이가 지나간섹션 + 활성화된 섹션의 높이보다 커지면 활성화된 섹션 ++
+      activeSection.current++;
+
+      //활성화된 섹션 변경되면 article 클래스명 변경
+      setActiveSectionClassName(`showSection-${activeSection.current}`);
+    }
+
+    if (yOffset.current < sumPrevSectionHeight.current) {
+      //스크롤 할때마다 현재 스크롤의 높이가 지나간 섹션의 높이의 합보다 작하지면 활성화된 섹션 --
+      activeSection.current--;
+
+      //활성화된 섹션 변경되면 article 클래스명 변경
+      setActiveSectionClassName(`showSection-${activeSection.current}`);
+    }
+
+    animationPlayer();
+  };
+
+  const handleResize = () => {
+    setSectionInfo();
+  };
+
+  useEffect(() => {
+    setSectionInfo();
+
+    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   const [isSkillModalOpen, setIsSkillModalOpen] = useState<boolean>(false);
   const [isPortfolioModalOpen, setIsPortfolioModalOpen] =
     useState<boolean>(false);
@@ -39,19 +532,36 @@ export default function Home() {
   return (
     <div>
       <div>
-        <Header></Header>
+        <Header activeSection={activeSection.current}></Header>
         <main>
-          <article>
+          <article
+            ref={article}
+            className={`group/wrap ${activeSectionClassName}`}
+          >
             <h3 className="sr-only">포트폴리오 메인 콘텐츠</h3>
-            <section className="text-6xl font-bold bg-orange-L3">
-              <div className="wrap w-[400px] md:w-[700px] xl:w-[1100px] mx-auto flex flex-col justify-center items-center h-[100vh] ">
+            <section
+              className="appleSection max-md:text-3xl max-xl:text-5xl text-7xl font-bold bg-orange-L3"
+              data-id={"appleSection_0"}
+              id="landing"
+            >
+              <div className="wrap w-[400px] md:w-[700px] xl:w-[1100px] mx-auto h-full">
                 <h4 className="sr-only">인사말</h4>
-                <div>안녕하세요.</div>
-                <div>Frontend Developer</div>
-                <div>김태형의 포트폴리오 방문을 환영합니다.</div>
+                <div className="main-message-a fixed hidden w-full text-center left-1/2 top-1/2  -translate-y-1/2 group-[.showSection-0]/wrap:block opacity-0">
+                  안녕하세요.
+                </div>
+                <div className="main-message-b fixed hidden w-full text-center left-1/2 top-1/2 -translate-y-1/2 group-[.showSection-0]/wrap:block opacity-0">
+                  Frontend Developer
+                </div>
+                <div className="main-message-c fixed hidden w-full text-center left-1/2 top-1/2  -translate-y-1/2 group-[.showSection-0]/wrap:block opacity-0">
+                  김태형의 포트폴리오 방문을 환영합니다.
+                </div>
               </div>
             </section>
-            <section className="py-40" id="about">
+            <section
+              className="appleSection py-40"
+              id="about"
+              data-id={"appleSection_1"}
+            >
               <div className="wrap w-[400px] md:w-[700px] xl:w-[1100px] mx-auto transition-all">
                 <div className="mb-12 ">
                   <h4
@@ -157,7 +667,11 @@ export default function Home() {
                 </div>
               </div>
             </section>
-            <section className="py-40 bg-orange-L1" id="career">
+            <section
+              className="appleSection py-40 bg-orange-L1"
+              id="career"
+              data-id={"appleSection_2"}
+            >
               <div className="wrap w-[400px] md:w-[700px] xl:w-[1100px] mx-auto transition-all">
                 <div className="mb-12">
                   <h4
@@ -273,7 +787,11 @@ export default function Home() {
               </div>
             </section>
 
-            <section className="py-40" id="skills">
+            <section
+              className="appleSection py-40"
+              id="skills"
+              data-id={"appleSection_3"}
+            >
               <div className="wrap w-[400px] md:w-[700px] xl:w-[1100px] mx-auto transition-all">
                 <div className="mb-12">
                   <h4
@@ -319,7 +837,11 @@ export default function Home() {
                 </div>
               </div>
             </section>
-            <section className="py-40" id="projects">
+            <section
+              className="appleSection py-40"
+              id="projects"
+              data-id={"appleSection_4"}
+            >
               <div className="wrap w-[400px] md:w-[700px] xl:w-[1100px] mx-auto ">
                 <div className="mb-12">
                   <h4
@@ -334,12 +856,11 @@ export default function Home() {
                 <div>
                   <ul className="flex flex-wrap gap-4">
                     {portfolios.map((portfolio) => (
-                      // <li key={item.id}>aaa</li>
                       <li
                         key={portfolio.id}
-                        className="basis-[calc(33%-8px)] max-md:basis-[calc(100%-8px)] pb-4 shadow-lg rounded-md overflow-hidden bg-orange-L3 relative h-[400px] flex flex-col justify-end flex-1 hover:-translate-y-4 hover:scale-105 transition-all group"
+                        className="basis-[calc(33%-8px)] max-md:basis-[calc(100%-8px)] pb-4 shadow-lg rounded-md overflow-hidden bg-orange-L3 relative h-[400px] flex flex-col justify-end flex-1 hover:-translate-y-4 hover:scale-105 transition-all group/portfolio"
                       >
-                        <div className=" absolute left-0 top-0 w-full h-full bg-apple-black z-10 hidden bg-opacity-50 group-hover:flex group-hover:flex-col group-hover:justify-center gap-4 text-white">
+                        <div className=" absolute left-0 top-0 w-full h-full bg-apple-black z-10 hidden bg-opacity-50 group-hover/portfolio:flex group-hover/portfolio:flex-col group-hover/portfolio:justify-center gap-4 text-white">
                           <div className="w-full">
                             <button
                               className="rounded-md w-1/2 py-2 px-4 block m-auto bg-orange-L3"
@@ -393,12 +914,22 @@ export default function Home() {
                 </div>
               </div>
             </section>
-            <section className="text-6xl font-bold bg-orange-L3">
-              <div className="wrap w-[400px] md:w-[700px] xl:w-[1100px] mx-auto flex flex-col justify-center items-center h-[100vh] ">
+            <section
+              className="appleSection max-md:text-3xl max-xl:text-5xl text-7xl font-bold bg-orange-L3"
+              id="takeOff"
+              data-id={"appleSection_0"}
+            >
+              <div className="wrap w-[400px] md:w-[700px] xl:w-[1100px] mx-auto h-full">
                 <h4 className="sr-only">인사말</h4>
-                <div>지금까지.</div>
-                <div>Frontend Developer</div>
-                <div>김태형이었습니다. 감사합니다.</div>
+                <div className="main-message-a fixed hidden w-full text-center left-1/2 top-1/2  -translate-y-1/2 group-[.showSection-5]/wrap:block opacity-0">
+                  지금까지.
+                </div>
+                <div className="main-message-b fixed hidden w-full text-center left-1/2 top-1/2 -translate-y-1/2 group-[.showSection-5]/wrap:block opacity-0">
+                  Frontend Developer
+                </div>
+                <div className="main-message-c fixed hidden w-full text-center left-1/2 top-1/2  -translate-y-1/2 group-[.showSection-5]/wrap:block opacity-0">
+                  김태형이었습니다.
+                </div>
               </div>
             </section>
           </article>
