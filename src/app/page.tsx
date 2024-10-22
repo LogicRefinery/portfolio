@@ -16,6 +16,7 @@ import PortfolioModal from "@/_components/PortfolioModal";
 import { skills } from "@/_components/Skills";
 import { portfolios } from "@/_components/Portfolios";
 import { Portfolio } from "@/_model/portfolio";
+
 import { shrikhand } from "@/_fonts/fonts";
 
 type AnimationOption = [number, number, { start: number; end: number }?];

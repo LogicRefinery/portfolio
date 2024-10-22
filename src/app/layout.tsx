@@ -1,5 +1,6 @@
 import "./globals.css";
 import type { Metadata } from "next";
+
 import { noto_sans_kr } from "@/_fonts/fonts";
 
 export const metadata: Metadata = {
@@ -18,7 +19,7 @@ export default function RootLayout({
   return (
     <html lang="ko" className="scroll-smooth">
       <body
-        className={`${noto_sans_kr.className} text-apple-black tracking-tighter`}
+        className={`${noto_sans_kr.className}text-apple-black tracking-tighter`}
       >
         {children}
       </body>
