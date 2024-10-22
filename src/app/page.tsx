@@ -21,18 +21,18 @@ import { Portfolio } from "@/_model/portfolio";
 type AnimationOption = [number, number, { start: number; end: number }?];
 
 type AnimationKinds = {
-  messageA_opacity_in: AnimationOption;
-  messageB_opacity_in: AnimationOption;
-  messageC_opacity_in: AnimationOption;
-  messageA_opacity_out: AnimationOption;
-  messageB_opacity_out: AnimationOption;
-  messageC_opacity_out: AnimationOption;
-  messageA_translateY_in: AnimationOption;
-  messageB_translateY_in: AnimationOption;
-  messageC_translateY_in: AnimationOption;
-  messageA_translateY_out: AnimationOption;
-  messageB_translateY_out: AnimationOption;
-  messageC_translateY_out: AnimationOption;
+  messageA_opacity_in?: AnimationOption;
+  messageB_opacity_in?: AnimationOption;
+  messageC_opacity_in?: AnimationOption;
+  messageA_opacity_out?: AnimationOption;
+  messageB_opacity_out?: AnimationOption;
+  messageC_opacity_out?: AnimationOption;
+  messageA_translateY_in?: AnimationOption;
+  messageB_translateY_in?: AnimationOption;
+  messageC_translateY_in?: AnimationOption;
+  messageA_translateY_out?: AnimationOption;
+  messageB_translateY_out?: AnimationOption;
+  messageC_translateY_out?: AnimationOption;
 };
 
 type AnimationElements = Record<string, HTMLElement | null>;
@@ -74,20 +74,7 @@ const initialInfo: SectionInfo[] = [
     sectionHeight: 0, //각 섹션의 임의로 정한 높이 ( 애니메이션이 진행될 스크롤 높이 )
     sectionElement: null,
     animationElements: null,
-    animations: {
-      messageA_opacity_in: [0, 1, { start: 0, end: 0.1 }],
-      messageB_opacity_in: [0, 1, { start: 0.3, end: 0.4 }],
-      messageC_opacity_in: [0, 1, { start: 0.6, end: 0.7 }],
-      messageA_opacity_out: [1, 0, { start: 0.2, end: 0.3 }],
-      messageB_opacity_out: [1, 0, { start: 0.5, end: 0.6 }],
-      messageC_opacity_out: [1, 0, { start: 0.8, end: 0.9 }],
-      messageA_translateY_in: [20, 0, { start: 0, end: 0.07 }],
-      messageB_translateY_in: [20, 0, { start: 0.28, end: 0.35 }],
-      messageC_translateY_in: [20, 0, { start: 0.56, end: 0.63 }],
-      messageA_translateY_out: [0, -20, { start: 0.14, end: 0.21 }],
-      messageB_translateY_out: [0, -20, { start: 0.42, end: 0.49 }],
-      messageC_translateY_out: [0, -20, { start: 0.7, end: 0.77 }],
-    },
+    animations: {},
   },
   {
     type: "normal",
@@ -96,20 +83,7 @@ const initialInfo: SectionInfo[] = [
 
     sectionElement: null,
     animationElements: null,
-    animations: {
-      messageA_opacity_in: [0, 1, { start: 0, end: 0.1 }],
-      messageB_opacity_in: [0, 1, { start: 0.3, end: 0.4 }],
-      messageC_opacity_in: [0, 1, { start: 0.6, end: 0.7 }],
-      messageA_opacity_out: [1, 0, { start: 0.2, end: 0.3 }],
-      messageB_opacity_out: [1, 0, { start: 0.5, end: 0.6 }],
-      messageC_opacity_out: [1, 0, { start: 0.8, end: 0.9 }],
-      messageA_translateY_in: [20, 0, { start: 0, end: 0.07 }],
-      messageB_translateY_in: [20, 0, { start: 0.28, end: 0.35 }],
-      messageC_translateY_in: [20, 0, { start: 0.56, end: 0.63 }],
-      messageA_translateY_out: [0, -20, { start: 0.14, end: 0.21 }],
-      messageB_translateY_out: [0, -20, { start: 0.42, end: 0.49 }],
-      messageC_translateY_out: [0, -20, { start: 0.7, end: 0.77 }],
-    },
+    animations: {},
   },
   {
     type: "normal",
@@ -118,20 +92,7 @@ const initialInfo: SectionInfo[] = [
 
     sectionElement: null,
     animationElements: null,
-    animations: {
-      messageA_opacity_in: [0, 1, { start: 0, end: 0.7 }],
-      messageB_opacity_in: [0, 1, { start: 2.8, end: 3.5 }],
-      messageC_opacity_in: [0, 1, { start: 5.6, end: 6.3 }],
-      messageA_opacity_out: [1, 0, { start: 1.4, end: 2.1 }],
-      messageB_opacity_out: [1, 0, { start: 4.2, end: 4.9 }],
-      messageC_opacity_out: [1, 0, { start: 7.0, end: 7.7 }],
-      messageA_translateY_in: [20, 0, { start: 0, end: 0.07 }],
-      messageB_translateY_in: [20, 0, { start: 0.28, end: 0.35 }],
-      messageC_translateY_in: [20, 0, { start: 0.56, end: 0.63 }],
-      messageA_translateY_out: [0, -20, { start: 0.14, end: 0.21 }],
-      messageB_translateY_out: [0, -20, { start: 0.42, end: 0.49 }],
-      messageC_translateY_out: [0, -20, { start: 0.7, end: 0.77 }],
-    },
+    animations: {},
   },
   {
     type: "normal",
@@ -189,29 +150,34 @@ export default function Home() {
     useState<string>("showSection-0");
 
   const setSectionInfo = () => {
-    const sections = article.current?.querySelectorAll(".appleSection"); //모든 섹션 가져오기
+    const sections = article.current?.querySelectorAll(".appleSection"); // 모든 섹션 가져오기
 
     sectionInfo.current = sectionInfo.current.map((info, i) => {
-      const sectionHeight =
-        info.type === "sticky"
-          ? info.multiply * window.innerHeight
-          : sections && sections[i]
-          ? sections[i].clientHeight
-          : 0; // normal 타입은 요소의 원래 높이 사용
+      let sectionHeight: number;
+
+      // 섹션 타입에 따라 높이 설정
+      if (info.type === "sticky") {
+        sectionHeight = info.multiply * window.innerHeight; // sticky 타입의 높이
+      } else {
+        const section = sections ? (sections[i] as HTMLElement) : null;
+        sectionHeight = section ? section.scrollHeight : 0; // normal 타입은 요소의 실제 콘텐츠 높이 사용
+      }
 
       const section = sections ? (sections[i] as HTMLElement) : null;
       let animationElements: AnimationElements | null = null;
 
-      if (section) section.style.setProperty("height", `${sectionHeight}px`);
-
+      // 애니메이션 요소 설정
       if (i < 1 || i > 4) {
-        if (sections)
+        if (sections) {
+          section?.style.setProperty("height", `${sectionHeight}px`); // 이 줄을 제거하여 고정 높이 설정을 없앱니다.
           animationElements = {
             messageA: sections[i].querySelector(".main-message-a"),
             messageB: sections[i].querySelector(".main-message-b"),
             messageC: sections[i].querySelector(".main-message-c"),
           };
+        }
       }
+
       return {
         ...info,
         animationElements,
@@ -222,7 +188,7 @@ export default function Home() {
   };
 
   const animationCalculator = (
-    animation: AnimationOption,
+    animation: AnimationOption | undefined,
     activeSectionScrollProgress: number
   ) => {
     let value = 0;
@@ -231,7 +197,7 @@ export default function Home() {
 
     const scrollRatio = activeSectionScrollProgress / activeSectionScrollHeight; //현재 섹션에서 스크롤된 비율 ( 스크롤 된 높이 / 섹션 전체 높이 ) 0 ~ 1 사이의 소수점을 반환
 
-    if (animation.length === 3) {
+    if (animation?.length === 3) {
       // start, end 사이 애니메이션 구현
       const startAnimationPixel =
         (animation[2]?.start as number) * activeSectionScrollHeight;
@@ -256,7 +222,8 @@ export default function Home() {
         value = animation[1];
       }
     } else {
-      value = scrollRatio * (animation[1] - animation[0]) + animation[0];
+      if (animation)
+        value = scrollRatio * (animation[1] - animation[0]) + animation[0];
     }
 
     return value;

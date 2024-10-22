@@ -47,6 +47,8 @@ export const portfolios: Portfolio[] = [
           "혹은 이제 개발할 애플 인터렉션에서 발생할 문제",
           "테일윈드 showSection_0 showSection-0 언더스코어 문제.. 언더스코어 사용하면 안되는듯",
           "메뉴 오파시티 효과만 작성했을 때 전체 페이지에 스크롤 이벤트가 걸린것을 활용하여 프롭스로 섹션을 구분 했던 내용",
+          "테일윈드 그룹 묶기 이슈 ( group 태그 사용 방법 ) ",
+          "각 섹션의 높이를 셋팅하니까 레이아웃 이 망가지는 현상",
 
           // 예제 코드 ..
           // <div className="group is-published">
