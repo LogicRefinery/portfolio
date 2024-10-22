@@ -547,7 +547,7 @@ export default function Home() {
                       alt="김태형 프로필사진"
                       fill
                       priority
-                      sizes="50vw"
+                      sizes="(max-width: 768px) 50vw,(max-width: 1280px) 50vw, 33vw"
                     ></Image>
                   </div>
                   <div className="flex-1">
