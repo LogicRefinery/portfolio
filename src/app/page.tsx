@@ -512,7 +512,7 @@ export default function Home() {
               data-id={"appleSection_0"}
               id="landing"
             >
-              <div className="wrap w-[400px] md:w-[700px] xl:w-[1100px] mx-auto h-full">
+              <div className="wrap w-[360px] px-5 md:w-[700px] xl:w-[1100px] mx-auto h-full">
                 <h4 className="sr-only">인사말</h4>
                 <div className="main-message-a fixed hidden w-full text-center left-1/2 top-1/2  -translate-y-1/2 group-[.showSection-0]/wrap:block opacity-0">
                   안녕하세요.
@@ -530,7 +530,7 @@ export default function Home() {
               id="about"
               data-id={"appleSection_1"}
             >
-              <div className="wrap w-[400px] md:w-[700px] xl:w-[1100px] mx-auto transition-all">
+              <div className="wrap w-[360px] px-5 md:w-[700px] xl:w-[1100px] mx-auto transition-all">
                 <div className="mb-12 ">
                   <h4
                     className={`text-center text-7xl font-bold ${shrikhand.className} text-orange-L2 `}
@@ -640,7 +640,7 @@ export default function Home() {
               id="career"
               data-id={"appleSection_2"}
             >
-              <div className="wrap w-[400px] md:w-[700px] xl:w-[1100px] mx-auto transition-all">
+              <div className="wrap w-[360px] px-5 md:w-[700px] xl:w-[1100px] mx-auto transition-all">
                 <div className="mb-12">
                   <h4
                     className={`text-center text-7xl font-bold ${shrikhand.className} text-orange-L2 `}
@@ -760,7 +760,7 @@ export default function Home() {
               id="skills"
               data-id={"appleSection_3"}
             >
-              <div className="wrap w-[400px] md:w-[700px] xl:w-[1100px] mx-auto transition-all">
+              <div className="wrap w-[360px]  px-5 md:w-[700px] xl:w-[1100px] mx-auto transition-all">
                 <div className="mb-12">
                   <h4
                     className={`text-center text-7xl font-bold ${shrikhand.className} text-orange-L2 `}
@@ -810,7 +810,7 @@ export default function Home() {
               id="projects"
               data-id={"appleSection_4"}
             >
-              <div className="wrap w-[400px] md:w-[700px] xl:w-[1100px] mx-auto ">
+              <div className="wrap w-[360px] px-5 md:w-[700px] xl:w-[1100px] mx-auto ">
                 <div className="mb-12">
                   <h4
                     className={`text-center text-7xl font-bold ${shrikhand.className} text-orange-L2 `}
@@ -887,7 +887,7 @@ export default function Home() {
               id="takeOff"
               data-id={"appleSection_0"}
             >
-              <div className="wrap w-[400px] md:w-[700px] xl:w-[1100px] mx-auto h-full">
+              <div className="wrap w-[360px] md:w-[700px] xl:w-[1100px] mx-auto h-full">
                 <h4 className="sr-only">인사말</h4>
                 <div className="main-message-a fixed hidden w-full text-center left-1/2 top-1/2  -translate-y-1/2 group-[.showSection-5]/wrap:block opacity-0">
                   지금까지.
