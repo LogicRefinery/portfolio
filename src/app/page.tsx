@@ -6,7 +6,7 @@ import { BiSolidSchool } from "react-icons/bi";
 import { IoSchoolOutline } from "react-icons/io5";
 import { FaSquareGithub } from "react-icons/fa6";
 import { SiVelog } from "react-icons/si";
-import { shrikhand } from "@/_fonts/fonts";
+// import { shrikhand } from "@/_fonts/fonts";
 import Image from "next/image";
 import Link from "next/link";
 import { createPortal } from "react-dom";
@@ -532,7 +532,7 @@ export default function Home() {
               <div className="wrap w-[400px] md:w-[700px] xl:w-[1100px] mx-auto transition-all">
                 <div className="mb-12 ">
                   <h4
-                    className={`text-center text-7xl font-bold ${shrikhand.className} text-orange-L2 `}
+                    className={`text-center text-7xl font-bold font-shrikhand text-orange-L2 `}
                   >
                     About Me
                   </h4>
@@ -642,7 +642,7 @@ export default function Home() {
               <div className="wrap w-[400px] md:w-[700px] xl:w-[1100px] mx-auto transition-all">
                 <div className="mb-12">
                   <h4
-                    className={`text-center text-7xl font-bold ${shrikhand.className} text-orange-L2 `}
+                    className={`text-center text-7xl font-bold font-shrikhand text-orange-L2 `}
                   >
                     Career
                   </h4>
@@ -762,7 +762,7 @@ export default function Home() {
               <div className="wrap w-[400px] md:w-[700px] xl:w-[1100px] mx-auto transition-all">
                 <div className="mb-12">
                   <h4
-                    className={`text-center text-7xl font-bold ${shrikhand.className} text-orange-L2 `}
+                    className={`text-center text-7xl font-bold font-shrikhand text-orange-L2 `}
                   >
                     Skills
                   </h4>
@@ -812,7 +812,7 @@ export default function Home() {
               <div className="wrap w-[400px] md:w-[700px] xl:w-[1100px] mx-auto ">
                 <div className="mb-12">
                   <h4
-                    className={`text-center text-7xl font-bold ${shrikhand.className} text-orange-L2 `}
+                    className={`text-center text-7xl font-bold font-shrikhand text-orange-L2 `}
                   >
                     Projects
                   </h4>

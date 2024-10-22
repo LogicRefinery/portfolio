@@ -15,6 +15,9 @@ const config: Config = {
         "apple-black": "#1d1d1f",
         "apple-gray": "#86868B",
       },
+      fontFamily: {
+        shrikhand: ["Shrikhand", "sans-serif"],
+      },
     },
   },
   plugins: [],

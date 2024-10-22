@@ -1,6 +1,11 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { noto_sans_kr } from "@/_fonts/fonts";
+import { Noto_Sans_KR } from "next/font/google";
+
+const noto_sans_kr = Noto_Sans_KR({
+  subsets: ["latin"],
+  display: "swap", // 폰트 스왑 사용
+});
 
 export const metadata: Metadata = {
   title: "김태형의 포트폴리오",
