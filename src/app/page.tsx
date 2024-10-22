@@ -6,7 +6,6 @@ import { BiSolidSchool } from "react-icons/bi";
 import { IoSchoolOutline } from "react-icons/io5";
 import { FaSquareGithub } from "react-icons/fa6";
 import { SiVelog } from "react-icons/si";
-// import { shrikhand } from "@/_fonts/fonts";
 import Image from "next/image";
 import Link from "next/link";
 import { createPortal } from "react-dom";
