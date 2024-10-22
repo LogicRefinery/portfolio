@@ -60,7 +60,10 @@ export const portfolios: Portfolio[] = [
           //   </div>
           // </div>,
         ],
-        solution: ["이걸 해결할 이야기", "이걸 해결할 이야기"],
+        solution: [
+          "이미지 사이즈 작게하기, 폰트 불러오는거 로컬 폰트로 하기 ,이걸 해결할 이야기",
+          "이걸 해결할 이야기",
+        ],
       },
     ],
     retrospect:

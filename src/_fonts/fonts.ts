@@ -8,4 +8,5 @@ export const noto_sans_kr = Noto_Sans_KR({
 export const shrikhand = Shrikhand({
   weight: "400",
   subsets: ["latin"],
+  display: "swap",
 });

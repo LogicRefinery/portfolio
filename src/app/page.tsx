@@ -16,6 +16,7 @@ import PortfolioModal from "@/_components/PortfolioModal";
 import { skills } from "@/_components/Skills";
 import { portfolios } from "@/_components/Portfolios";
 import { Portfolio } from "@/_model/portfolio";
+import { shrikhand } from "@/_fonts/fonts";
 
 type AnimationOption = [number, number, { start: number; end: number }?];
 
@@ -531,7 +532,7 @@ export default function Home() {
               <div className="wrap w-[400px] md:w-[700px] xl:w-[1100px] mx-auto transition-all">
                 <div className="mb-12 ">
                   <h4
-                    className={`text-center text-7xl font-bold font-shrikhand text-orange-L2 `}
+                    className={`text-center text-7xl font-bold ${shrikhand.className} text-orange-L2 `}
                   >
                     About Me
                   </h4>
@@ -542,7 +543,7 @@ export default function Home() {
                 <div className="flex gap-4 mb-4 max-md:flex-col">
                   <div className="flex-1 bg-slate-200 relative aspect-[1] w-full h-full rounded-2xl overflow-hidden">
                     <Image
-                      src={"/profile.webp"}
+                      src={"/profile.png"}
                       alt="김태형 프로필사진"
                       fill
                       priority
@@ -641,7 +642,7 @@ export default function Home() {
               <div className="wrap w-[400px] md:w-[700px] xl:w-[1100px] mx-auto transition-all">
                 <div className="mb-12">
                   <h4
-                    className={`text-center text-7xl font-bold font-shrikhand text-orange-L2 `}
+                    className={`text-center text-7xl font-bold ${shrikhand.className} text-orange-L2 `}
                   >
                     Career
                   </h4>
@@ -761,7 +762,7 @@ export default function Home() {
               <div className="wrap w-[400px] md:w-[700px] xl:w-[1100px] mx-auto transition-all">
                 <div className="mb-12">
                   <h4
-                    className={`text-center text-7xl font-bold font-shrikhand text-orange-L2 `}
+                    className={`text-center text-7xl font-bold ${shrikhand.className} text-orange-L2 `}
                   >
                     Skills
                   </h4>
@@ -811,7 +812,7 @@ export default function Home() {
               <div className="wrap w-[400px] md:w-[700px] xl:w-[1100px] mx-auto ">
                 <div className="mb-12">
                   <h4
-                    className={`text-center text-7xl font-bold font-shrikhand text-orange-L2 `}
+                    className={`text-center text-7xl font-bold ${shrikhand.className} text-orange-L2 `}
                   >
                     Projects
                   </h4>
