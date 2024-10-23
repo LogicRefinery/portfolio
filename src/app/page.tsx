@@ -66,7 +66,7 @@ const initialInfo: SectionInfo[] = [
       messageC_translateY_in: [20, 0, { start: 0.56, end: 0.63 }],
       messageA_translateY_out: [0, -20, { start: 0.14, end: 0.21 }],
       messageB_translateY_out: [0, -20, { start: 0.42, end: 0.49 }],
-      messageC_translateY_out: [0, -60, { start: 0.7, end: 1 }],
+      messageC_translateY_out: [0, -70, { start: 0.7, end: 1 }],
     },
   },
   {
@@ -101,20 +101,7 @@ const initialInfo: SectionInfo[] = [
     sectionHeight: 0, //각 섹션의 임의로 정한 높이 ( 애니메이션이 진행될 스크롤 높이 )
     sectionElement: null,
     animationElements: null,
-    animations: {
-      messageA_opacity_in: [0, 1, { start: 0, end: 0.1 }],
-      messageB_opacity_in: [0, 1, { start: 0.3, end: 0.4 }],
-      messageC_opacity_in: [0, 1, { start: 0.6, end: 0.7 }],
-      messageA_opacity_out: [1, 0, { start: 0.2, end: 0.3 }],
-      messageB_opacity_out: [1, 0, { start: 0.5, end: 0.6 }],
-      messageC_opacity_out: [1, 0, { start: 0.8, end: 0.9 }],
-      messageA_translateY_in: [20, 0, { start: 0, end: 0.07 }],
-      messageB_translateY_in: [20, 0, { start: 0.28, end: 0.35 }],
-      messageC_translateY_in: [20, 0, { start: 0.56, end: 0.63 }],
-      messageA_translateY_out: [0, -20, { start: 0.14, end: 0.21 }],
-      messageB_translateY_out: [0, -20, { start: 0.42, end: 0.49 }],
-      messageC_translateY_out: [0, -20, { start: 0.7, end: 0.77 }],
-    },
+    animations: {},
   },
   {
     type: "sticky",
