@@ -118,7 +118,7 @@ const initialInfo: SectionInfo[] = [
       messageB_opacity_out: [1, 0, { start: 0.42, end: 0.49 }],
       messageC_opacity_out: [1, 0, { start: 0.7, end: 0.77 }],
 
-      messageA_translateY_in: [20, 0, { start: 0, end: 0.07 }],
+      messageA_translateY_in: [20, 0, { start: 0.01, end: 0.08 }],
       messageB_translateY_in: [20, 0, { start: 0.28, end: 0.35 }],
       messageC_translateY_in: [20, 0, { start: 0.56, end: 0.63 }],
       messageA_translateY_out: [0, -20, { start: 0.14, end: 0.21 }],
