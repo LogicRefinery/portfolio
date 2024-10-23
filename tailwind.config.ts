@@ -17,9 +17,17 @@ const config: Config = {
       },
       keyframes: {
         scrollDown: {
-          "0%": { transform: "translate3D(-50%,0,0) scale(1,1)" },
+          "0%": {
+            transform: "translate3D(-50%,0,0) scale(1,1)",
+            // display: "block",
+            opacity: "1",
+          },
           "70%": { transform: "translate3D(-50%,10px,0) scale(1,.5)" },
-          "100%": { transform: "translate3D(-50%,10px,0) scale(1,.5)" },
+          "100%": {
+            transform: "translate3D(-50%,10px,0) scale(1,.5)",
+            // display: "none",
+            opacity: "0",
+          },
         },
       },
       animation: {
