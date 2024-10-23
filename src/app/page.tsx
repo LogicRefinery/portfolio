@@ -118,12 +118,12 @@ const initialInfo: SectionInfo[] = [
       messageB_opacity_out: [1, 0, { start: 0.42, end: 0.49 }],
       messageC_opacity_out: [1, 0, { start: 0.7, end: 0.77 }],
 
-      messageA_translateY_in: [20, 0, { start: 0.1, end: 0.18 }],
-      messageB_translateY_in: [20, 0, { start: 0.38, end: 0.45 }],
-      messageC_translateY_in: [20, 0, { start: 0.56, end: 0.73 }],
-      messageA_translateY_out: [0, -20, { start: 0.24, end: 0.31 }],
-      messageB_translateY_out: [0, -20, { start: 0.52, end: 0.59 }],
-      messageC_translateY_out: [0, 0, { start: 0.8, end: 0.87 }],
+      messageA_translateY_in: [20, 0, { start: 0.15, end: 0.23 }],
+      messageB_translateY_in: [20, 0, { start: 0.43, end: 0.5 }],
+      messageC_translateY_in: [20, 0, { start: 0.61, end: 0.78 }],
+      messageA_translateY_out: [0, -20, { start: 0.29, end: 0.36 }],
+      messageB_translateY_out: [0, -20, { start: 0.57, end: 0.64 }],
+      messageC_translateY_out: [0, 0, { start: 0.85, end: 0.92 }],
     },
   },
 ];
