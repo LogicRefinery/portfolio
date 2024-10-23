@@ -15,6 +15,16 @@ const config: Config = {
         "apple-black": "#1d1d1f",
         "apple-gray": "#86868B",
       },
+      keyframes: {
+        scrollDown: {
+          "0%": { transform: "translate3D(-50%,0,0) scale(1,1)" },
+          "70%": { transform: "translate3D(-50%,10px,0) scale(1,.5)" },
+          "100%": { transform: "translate3D(-50%,10px,0) scale(1,.5)" },
+        },
+      },
+      animation: {
+        scrollDown: "scrollDown 1s infinite cubic-bezier(0.25, 0.01, 1, 0.57)",
+      },
     },
   },
   plugins: [],

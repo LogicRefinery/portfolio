@@ -118,12 +118,12 @@ const initialInfo: SectionInfo[] = [
       messageB_opacity_out: [1, 0, { start: 0.42, end: 0.49 }],
       messageC_opacity_out: [1, 0, { start: 0.7, end: 0.77 }],
 
-      messageA_translateY_in: [20, 0, { start: 0.03, end: 0.11 }],
-      messageB_translateY_in: [20, 0, { start: 0.31, end: 0.38 }],
-      messageC_translateY_in: [20, 0, { start: 0.59, end: 0.66 }],
-      messageA_translateY_out: [0, -20, { start: 0.17, end: 0.24 }],
-      messageB_translateY_out: [0, -20, { start: 0.45, end: 0.52 }],
-      messageC_translateY_out: [0, 0, { start: 0.73, end: 0.8 }],
+      messageA_translateY_in: [20, 0, { start: 0.1, end: 0.18 }],
+      messageB_translateY_in: [20, 0, { start: 0.38, end: 0.45 }],
+      messageC_translateY_in: [20, 0, { start: 0.56, end: 0.73 }],
+      messageA_translateY_out: [0, -20, { start: 0.24, end: 0.31 }],
+      messageB_translateY_out: [0, -20, { start: 0.52, end: 0.59 }],
+      messageC_translateY_out: [0, 0, { start: 0.8, end: 0.87 }],
     },
   },
 ];
@@ -136,6 +136,8 @@ export default function Home() {
   const activeSection = useRef<number>(0); // 현재 활성화된 섹션
   const [activeSectionClassName, setActiveSectionClassName] =
     useState<string>("showSection-0");
+  const [hasScrollIconVisible, setHasScrollIconVisible] =
+    useState<boolean>(true);
 
   const setSectionInfo = () => {
     const sections = article.current?.querySelectorAll(".appleSection"); // 모든 섹션 가져오기
@@ -309,6 +311,7 @@ export default function Home() {
               animation.messageC_translateY_in,
               activeSectionScrollProgress
             )}%,0)`;
+            setHasScrollIconVisible(true);
           } else {
             animationElements[
               "messageC"
@@ -316,6 +319,8 @@ export default function Home() {
               animation.messageC_translateY_out,
               activeSectionScrollProgress
             )}vh,0)`;
+
+            setHasScrollIconVisible(false);
           }
         }
 
@@ -510,6 +515,16 @@ export default function Home() {
                 </div>
                 <div className="main-message-c fixed  w-full text-center left-1/2 top-1/2  -translate-y-1/2 opacity-0">
                   김태형의 포트폴리오 방문을 환영합니다.
+                </div>
+                <div
+                  className={`fixed bottom-4 left-1/2 -translate-x-1/2 text-black  font-thin text-2xl flex flex-col justify-center items-center ${
+                    hasScrollIconVisible ? "opacity-100" : "opacity-0"
+                  } transition-all `}
+                >
+                  <div className="border-2 border-black rounded-full w-[30px] h-[50px]">
+                    <div className="w-1 h-3 left-1/2 bg-black absolute top-2 rounded-full animate-scrollDown"></div>
+                  </div>
+                  <div className="tracking-widest text-xl">Scroll</div>
                 </div>
               </div>
             </section>
