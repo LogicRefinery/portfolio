@@ -514,13 +514,13 @@ export default function Home() {
             >
               <div className="wrap w-[360px] px-5 md:w-[700px] xl:w-[1100px] mx-auto h-full">
                 <h4 className="sr-only">인사말</h4>
-                <div className="main-message-a fixed hidden w-full text-center left-1/2 top-1/2  -translate-y-1/2 group-[.showSection-0]/wrap:block opacity-0">
+                <div className="main-message-a fixed  w-full text-center left-1/2 top-1/2  -translate-y-1/2 opacity-0">
                   안녕하세요.
                 </div>
-                <div className="main-message-b fixed hidden w-full text-center left-1/2 top-1/2 -translate-y-1/2 group-[.showSection-0]/wrap:block opacity-0">
+                <div className="main-message-b fixed  w-full text-center left-1/2 top-1/2 -translate-y-1/2 opacity-0">
                   Frontend Developer
                 </div>
-                <div className="main-message-c fixed hidden w-full text-center left-1/2 top-1/2  -translate-y-1/2 group-[.showSection-0]/wrap:block opacity-0">
+                <div className="main-message-c fixed  w-full text-center left-1/2 top-1/2  -translate-y-1/2 opacity-0">
                   김태형의 포트폴리오 방문을 환영합니다.
                 </div>
               </div>
@@ -889,13 +889,13 @@ export default function Home() {
             >
               <div className="wrap w-[360px] md:w-[700px] xl:w-[1100px] mx-auto h-full">
                 <h4 className="sr-only">인사말</h4>
-                <div className="main-message-a fixed hidden w-full text-center left-1/2 top-1/2  -translate-y-1/2 group-[.showSection-5]/wrap:block opacity-0">
+                <div className="main-message-a fixed  w-full text-center left-1/2 top-1/2  -translate-y-1/2 opacity-0">
                   지금까지.
                 </div>
-                <div className="main-message-b fixed hidden w-full text-center left-1/2 top-1/2 -translate-y-1/2 group-[.showSection-5]/wrap:block opacity-0">
+                <div className="main-message-b fixed  w-full text-center left-1/2 top-1/2 -translate-y-1/2 opacity-0">
                   Frontend Developer
                 </div>
-                <div className="main-message-c fixed hidden w-full text-center left-1/2 top-1/2  -translate-y-1/2 group-[.showSection-5]/wrap:block opacity-0">
+                <div className="main-message-c fixed  w-full text-center left-1/2 top-1/2  -translate-y-1/2 opacity-0">
                   김태형이었습니다.
                 </div>
               </div>
