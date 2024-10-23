@@ -113,17 +113,15 @@ const initialInfo: SectionInfo[] = [
       messageA_opacity_in: [0, 1, { start: 0, end: 0.07 }],
       messageB_opacity_in: [0, 1, { start: 0.28, end: 0.35 }],
       messageC_opacity_in: [0, 1, { start: 0.56, end: 0.63 }],
-
       messageA_opacity_out: [1, 0, { start: 0.14, end: 0.21 }],
       messageB_opacity_out: [1, 0, { start: 0.42, end: 0.49 }],
       messageC_opacity_out: [1, 0, { start: 0.7, end: 0.77 }],
-
-      messageA_translateY_in: [20, 0, { start: 0.1, end: 0.18 }],
-      messageB_translateY_in: [20, 0, { start: 0.38, end: 0.45 }],
-      messageC_translateY_in: [20, 0, { start: 0.56, end: 0.73 }],
-      messageA_translateY_out: [0, -20, { start: 0.24, end: 0.31 }],
-      messageB_translateY_out: [0, -20, { start: 0.52, end: 0.59 }],
-      messageC_translateY_out: [0, 0, { start: 0.8, end: 0.87 }],
+      messageA_translateY_in: [20, 0, { start: 0, end: 0.07 }],
+      messageB_translateY_in: [20, 0, { start: 0.28, end: 0.35 }],
+      messageC_translateY_in: [20, 0, { start: 0.56, end: 0.63 }],
+      messageA_translateY_out: [0, -20, { start: 0.14, end: 0.21 }],
+      messageB_translateY_out: [0, -20, { start: 0.42, end: 0.49 }],
+      messageC_translateY_out: [0, -70, { start: 0.7, end: 1 }],
     },
   },
 ];
@@ -206,9 +204,9 @@ export default function Home() {
             animationFrame) *
             (animation[1] - animation[0]) +
           animation[0];
-      } else if (activeSectionScrollProgress < startAnimationPixel) {
+      } else if (activeSectionScrollProgress <= startAnimationPixel) {
         value = animation[0];
-      } else if (activeSectionScrollProgress > endAnimationPixel) {
+      } else if (activeSectionScrollProgress >= endAnimationPixel) {
         value = animation[1];
       }
     } else {
@@ -332,6 +330,13 @@ export default function Home() {
       case 3:
         break;
       case 4:
+        if (
+          sectionInfo.current[5].animationElements &&
+          sectionInfo.current[5].animationElements["messageA"]
+        ) {
+          sectionInfo.current[5].animationElements["messageA"].style.opacity =
+            "0";
+        }
         break;
       case 5:
         if (
@@ -340,7 +345,7 @@ export default function Home() {
           animationElements["messageB"] &&
           animationElements["messageC"]
         ) {
-          if (activeSectionScrollRatio <= 0.23) {
+          if (activeSectionScrollRatio <= 0.1) {
             animationElements[
               "messageA"
             ].style.opacity = `${animationCalculator(
@@ -360,6 +365,7 @@ export default function Home() {
               animation.messageA_opacity_out,
               activeSectionScrollProgress
             )}`;
+
             animationElements[
               "messageA"
             ].style.transform = `translate3d(-50%,${animationCalculator(
@@ -368,7 +374,7 @@ export default function Home() {
             )}%,0)`;
           }
 
-          if (activeSectionScrollRatio <= 0.49) {
+          if (activeSectionScrollRatio <= 0.4) {
             animationElements[
               "messageB"
             ].style.opacity = `${animationCalculator(
@@ -396,7 +402,7 @@ export default function Home() {
             )}%,0)`;
           }
 
-          if (activeSectionScrollRatio <= 0.76) {
+          if (activeSectionScrollRatio <= 0.66) {
             animationElements[
               "messageC"
             ].style.opacity = `${animationCalculator(
