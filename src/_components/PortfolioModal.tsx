@@ -86,11 +86,17 @@ function PortfolioModal({ selectPortfolio, modalController }: Props) {
                 </li>
                 <li>
                   <div className="text-2xl mb-2">트러블 슈팅</div>
-                  <ul>
+                  <ul className="flex flex-col gap-4">
                     {selectPortfolio.troubleshooting.map((trouble, i) => (
                       <li key={i}>
-                        <div>{trouble.trouble}</div>
-                        <div>{trouble.solution}</div>
+                        <div className="font-bold">
+                          <span className="mr-1">[ 문제 ]</span>
+                          {trouble.trouble}
+                        </div>
+                        <div className="text-apple-gray">
+                          <span className="font-bold">[ 해결 ]</span>
+                          {trouble.solution}
+                        </div>
                       </li>
                     ))}
                   </ul>
