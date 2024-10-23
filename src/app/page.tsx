@@ -456,6 +456,7 @@ export default function Home() {
     }
 
     if (yOffset.current < sumPrevSectionHeight.current) {
+      if (activeSection.current === 0) return; // 0번 섹션에서 브라우저 바운스 효과로 -가 되는것을 방지
       //스크롤 할때마다 현재 스크롤의 높이가 지나간 섹션의 높이의 합보다 작하지면 활성화된 섹션 --
       activeSection.current--;
 

@@ -17,9 +17,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ko" className="scroll-smooth">
+    <html lang="ko" className="scroll-smooth overscroll-none">
       <body
-        className={`${noto_sans_kr.className}text-apple-black tracking-tighter`}
+        className={`${noto_sans_kr.className}text-apple-black tracking-tighter `}
       >
         {children}
       </body>
