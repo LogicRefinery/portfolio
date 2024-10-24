@@ -593,7 +593,7 @@ export default function Home() {
           >
             <h3 className="sr-only">포트폴리오 메인 콘텐츠</h3>
             <section
-              className="appleSection max-md:text-3xl max-xl:text-5xl text-7xl font-bold bg-orange-L3"
+              className="appleSection  max-md:text-3xl max-xl:text-5xl text-7xl font-bold bg-orange-L3"
               data-id={"appleSection_0"}
               id="landing"
             >
@@ -621,7 +621,7 @@ export default function Home() {
               </div>
             </section>
             <section
-              className="appleSection py-40"
+              className="appleSection py-40 mt-1"
               id="about"
               data-id={"appleSection_1"}
             >
@@ -721,7 +721,7 @@ export default function Home() {
                             <FaSquareGithub size={55} />
                           </Link>
                           <p className="text-gray-400 text-sm ml-auto">
-                            Update 2024.10.09
+                            Update 2024.10.24
                           </p>
                         </div>
                       </li>
@@ -731,7 +731,7 @@ export default function Home() {
               </div>
             </section>
             <section
-              className="appleSection py-40 bg-orange-L1"
+              className="appleSection py-40 bg-orange-L1 mt-1"
               id="career"
               data-id={"appleSection_2"}
             >
@@ -851,7 +851,7 @@ export default function Home() {
             </section>
 
             <section
-              className="appleSection py-40"
+              className="appleSection py-40 mt-1"
               id="skills"
               data-id={"appleSection_3"}
             >
@@ -900,7 +900,7 @@ export default function Home() {
               </div>
             </section>
             <section
-              className="appleSection py-40"
+              className="appleSection py-40 mt-1"
               id="projects"
               data-id={"appleSection_4"}
             >

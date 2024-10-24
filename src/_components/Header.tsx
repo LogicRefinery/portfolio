@@ -15,7 +15,7 @@ function Header({ activeSection }: { activeSection: number }) {
         <h1 className={`text-orange-L2`}>
           <Link href={"/"}>taehyung.</Link>
         </h1>
-        <Nav></Nav>
+        <Nav activeSection={activeSection}></Nav>
       </div>
     </header>
   );
