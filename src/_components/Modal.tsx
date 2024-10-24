@@ -9,8 +9,6 @@ type Props = {
 };
 
 function Modal({ selectSkill, modalController }: Props) {
-  console.log(selectSkill);
-
   useEffect(() => {
     document.body.style.overflow = "hidden";
 

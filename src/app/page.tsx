@@ -9,9 +9,9 @@ import { SiVelog } from "react-icons/si";
 import Image from "next/image";
 import Link from "next/link";
 import { createPortal } from "react-dom";
-import Modal from "@/_components/Modal";
+// import Modal from "@/_components/Modal";
 import { useEffect, useRef, useState } from "react";
-import { SkillItem } from "@/_model/skills";
+// import { SkillItem } from "@/_model/skills";
 import PortfolioModal from "@/_components/PortfolioModal";
 import { skills } from "@/_components/Skills";
 import { portfolios } from "@/_components/Portfolios";
@@ -232,6 +232,9 @@ export default function Home() {
     const activeSectionScrollRatio =
       activeSectionScrollProgress / activeSectionHeight;
 
+    const landing = sectionInfo.current[0].animationElements;
+    const takeOff = sectionInfo.current[5].animationElements;
+
     switch (activeSection.current) {
       case 0:
         if (
@@ -324,21 +327,104 @@ export default function Home() {
 
         break;
       case 1:
-        break;
-      case 2:
-        break;
-      case 3:
-        break;
-      case 4:
+        setHasScrollIconVisible(false);
         if (
-          sectionInfo.current[5].animationElements &&
-          sectionInfo.current[5].animationElements["messageA"]
+          landing &&
+          landing["messageA"] &&
+          landing["messageB"] &&
+          landing["messageC"]
         ) {
-          sectionInfo.current[5].animationElements["messageA"].style.opacity =
-            "0";
+          landing["messageA"].style.opacity = "0";
+          landing["messageB"].style.opacity = "0";
+          landing["messageC"].style.opacity = "0";
+        }
+
+        if (
+          takeOff &&
+          takeOff["messageA"] &&
+          takeOff["messageB"] &&
+          takeOff["messageC"]
+        ) {
+          takeOff["messageA"].style.opacity = "0";
+          takeOff["messageB"].style.opacity = "0";
+          takeOff["messageC"].style.opacity = "0";
         }
         break;
+      case 2:
+        setHasScrollIconVisible(false);
+        if (
+          landing &&
+          landing["messageA"] &&
+          landing["messageB"] &&
+          landing["messageC"]
+        ) {
+          landing["messageA"].style.opacity = "0";
+          landing["messageB"].style.opacity = "0";
+          landing["messageC"].style.opacity = "0";
+        }
+
+        if (
+          takeOff &&
+          takeOff["messageA"] &&
+          takeOff["messageB"] &&
+          takeOff["messageC"]
+        ) {
+          takeOff["messageA"].style.opacity = "0";
+          takeOff["messageB"].style.opacity = "0";
+          takeOff["messageC"].style.opacity = "0";
+        }
+        break;
+      case 3:
+        setHasScrollIconVisible(false);
+        if (
+          landing &&
+          landing["messageA"] &&
+          landing["messageB"] &&
+          landing["messageC"]
+        ) {
+          landing["messageA"].style.opacity = "0";
+          landing["messageB"].style.opacity = "0";
+          landing["messageC"].style.opacity = "0";
+        }
+
+        if (
+          takeOff &&
+          takeOff["messageA"] &&
+          takeOff["messageB"] &&
+          takeOff["messageC"]
+        ) {
+          takeOff["messageA"].style.opacity = "0";
+          takeOff["messageB"].style.opacity = "0";
+          takeOff["messageC"].style.opacity = "0";
+        }
+        break;
+      case 4:
+        setHasScrollIconVisible(false);
+        if (
+          landing &&
+          landing["messageA"] &&
+          landing["messageB"] &&
+          landing["messageC"]
+        ) {
+          landing["messageA"].style.opacity = "0";
+          landing["messageB"].style.opacity = "0";
+          landing["messageC"].style.opacity = "0";
+        }
+
+        if (
+          takeOff &&
+          takeOff["messageA"] &&
+          takeOff["messageB"] &&
+          takeOff["messageC"]
+        ) {
+          takeOff["messageA"].style.opacity = "0";
+          takeOff["messageB"].style.opacity = "0";
+          takeOff["messageC"].style.opacity = "0";
+        }
+
+        break;
       case 5:
+        setHasScrollIconVisible(false);
         if (
           animationElements &&
           animationElements["messageA"] &&
@@ -469,14 +555,7 @@ export default function Home() {
     setSectionInfo();
   };
 
-  let vh = 0;
-
   useEffect(() => {
-    vh = window.innerHeight * 0.01;
-    document.documentElement.style.setProperty("--vh", `${vh}px`);
-
-    console.log(vh, "vh지롱 ~");
-
     setSectionInfo();
 
     window.addEventListener("scroll", handleScroll);
@@ -487,10 +566,10 @@ export default function Home() {
     };
   }, []);
 
-  const [isSkillModalOpen, setIsSkillModalOpen] = useState<boolean>(false);
+  // const [isSkillModalOpen, setIsSkillModalOpen] = useState<boolean>(false);
   const [isPortfolioModalOpen, setIsPortfolioModalOpen] =
     useState<boolean>(false);
-  const [selectSkill, setSelectSkill] = useState<SkillItem | null>(null);
+  // const [selectSkill, setSelectSkill] = useState<SkillItem | null>(null);
   const [selectPortfolio, setSelectPortfolio] = useState<Portfolio | null>(
     null
   );
@@ -499,9 +578,9 @@ export default function Home() {
     setIsPortfolioModalOpen(state);
   };
 
-  const skillModalController = (state: boolean) => {
-    setIsSkillModalOpen(state);
-  };
+  // const skillModalController = (state: boolean) => {
+  //   setIsSkillModalOpen(state);
+  // };
 
   return (
     <div>
@@ -784,8 +863,7 @@ export default function Home() {
                     Skills
                   </h4>
                   <p className="text-center text-3xl font-medium">
-                    아이콘을 클릭하면 제가 알고있는 개념에 대해 상세히 알아볼 수
-                    있어요.
+                    제가 알고있고 알아가는 기술을 아이콘으로 표현해봤어요.
                   </p>
                 </div>
                 <div>
@@ -796,10 +874,10 @@ export default function Home() {
                         className="basis-[calc(25%-16px)] max-md:basis-[calc(50%-16px)] flex items-center justify-center"
                       >
                         <div
-                          className="bg-apple-gray p-3 pt-[6px] rounded-[40px] hover:bg-orange-L2 group hover:scale-105 hover:-translate-y-2 transition-all cursor-pointer"
+                          className="p-3 pt-[6px] rounded-[40px] bg-orange-L1 group "
                           onClick={() => {
-                            skillModalController(true);
-                            setSelectSkill(skill);
+                            // skillModalController(true);
+                            // setSelectSkill(skill);
                           }}
                         >
                           <div className="bg-white rounded-[20px] p-6">
@@ -809,7 +887,7 @@ export default function Home() {
                       </li>
                     ))}
                   </ul>
-                  {isSkillModalOpen &&
+                  {/* {isSkillModalOpen &&
                     createPortal(
                       <Modal
                         selectSkill={selectSkill}
@@ -817,7 +895,7 @@ export default function Home() {
                       />,
 
                       document.body
-                    )}
+                    )} */}
                 </div>
               </div>
             </section>

@@ -6,12 +6,7 @@ import { SkillItem } from "@/_model/skills";
 export const skills: SkillItem[] = [
   {
     title: "internet",
-    icon: (
-      <TbWorldWww
-        size={60}
-        className="stroke-apple-gray group-hover:stroke-orange-L2 transition-all"
-      />
-    ),
+    icon: <TbWorldWww size={60} className="stroke-orange-L2 transition-all" />,
     skills: [
       {
         title: "DNS",
@@ -48,7 +43,7 @@ export const skills: SkillItem[] = [
     icon: (
       <>
         <span className="sr-only">html로고</span>
-        {Svg("html", 60, 60, "fill-[#86868B]", true)}
+        {Svg("html", 60, 60, "fill-[#E44D26]", false)}
       </>
     ),
     skills: [
@@ -78,7 +73,7 @@ export const skills: SkillItem[] = [
     icon: (
       <>
         <span className="sr-only">css 로고</span>
-        {Svg("css", 60, 60, "fill-[#86868B]", true)}
+        {Svg("css", 60, 60, "fill-[#1572B6]", false)}
       </>
     ),
     skills: [
@@ -120,7 +115,7 @@ export const skills: SkillItem[] = [
     icon: (
       <>
         <span className="sr-only">js 로고</span>
-        {Svg("js", 60, 60, "fill-[#86868B]", true)}
+        {Svg("js", 60, 60, "fill-[#F0DB4F]", false)}
       </>
     ),
     skills: [
@@ -157,7 +152,7 @@ export const skills: SkillItem[] = [
     icon: (
       <>
         <span className="sr-only">ts 로고</span>
-        {Svg("ts", 60, 60, "fill-[#86868B]", true)}
+        {Svg("ts", 60, 60, "fill-[#007acc]", false)}
       </>
     ),
     skills: [
@@ -199,7 +194,7 @@ export const skills: SkillItem[] = [
     icon: (
       <>
         <span className="sr-only">react 로고</span>
-        {Svg("react", 60, 60, "fill-[#86868B]", true)}
+        {Svg("react", 60, 60, "fill-[#61DAFB]", false)}
       </>
     ),
     skills: [
@@ -256,7 +251,7 @@ export const skills: SkillItem[] = [
     icon: (
       <>
         <span className="sr-only">next 로고</span>
-        {Svg("next", 60, 60, "fill-[#86868B]", true)}
+        {Svg("next", 60, 60, "fill-[#1d1d1f]", false)}
       </>
     ),
     skills: [
@@ -288,7 +283,7 @@ export const skills: SkillItem[] = [
     icon: (
       <>
         <span className="sr-only">supabase 로고</span>
-        {Svg("supabase", 60, 60, "fill-[#86868B]", true)}
+        {Svg("supabase", 60, 60, "fill-[#3ecf8e]", true)}
       </>
     ),
     skills: [
