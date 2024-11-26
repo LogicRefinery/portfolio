@@ -8,6 +8,13 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        pretendard: ["var(--font-pretendard)"],
+      },
+      container: {
+        center: true,
+        padding: "20px",
+      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
