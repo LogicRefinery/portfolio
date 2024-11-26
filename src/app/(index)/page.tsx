@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import TopButton from "./components/top-button";
+import { FaFilePdf, FaLink } from "react-icons/fa";
+import { FaSquareGithub } from "react-icons/fa6";
 
 export default function Home() {
   return (
@@ -112,20 +114,18 @@ export default function Home() {
                     <ul className="font-thin text-base break-all">
                       <li>2024.09.02 ~ 2024.09.10 ( 1인 )</li>
                       <li>Next, TS, Prisma, Supabase, Tailwind, Context API</li>
-                      <li>
+                      <li className="flex max-md:justify-center items-center gap-4 py-4">
                         <Link
                           href={"https://www.logicrefinery.co.kr/"}
                           target="_blank"
                         >
-                          https://www.logicrefinery.co.kr/
+                          <FaLink size={30}></FaLink>
                         </Link>
-                      </li>
-                      <li>
                         <Link
                           href={"https://github.com/LogicRefinery/supatodo"}
                           target="_blank"
                         >
-                          https://github.com/LogicRefinery/supatodo
+                          <FaSquareGithub size={38}></FaSquareGithub>
                         </Link>
                       </li>
                     </ul>
@@ -174,17 +174,24 @@ export default function Home() {
                         </li>
 
                         <li>
-                          [문제] 데이터 로딩 지연 - 로그인 성공 후,
-                          데이터베이스에서 데이터를 로딩하는데 시간이 과도하게
-                          오래 걸리는 문제가 있었습니다.
+                          [문제] 데이터 로딩 지연 - 로그인 성공 후, 버셀
+                          배포환경에서 수파베이스의 데이터를 조회하고
+                          응답해주는데 과도한 시간이 걸리는 문제가 있습니다.
                         </li>
 
                         <li>
-                          [해결] 이 문제는 Supabase의 무료 버전에서 발생하는
-                          제약으로, 현재는 이를 해결할 방법이 없었습니다. 개발
-                          단계에서는 비용 부담 때문에 그대로 두었지만, 이후 더
-                          나은 서비스를 배포할 때 유료 버전으로 업그레이드하는
-                          방안을 고려하고 있습니다.
+                          [해결] 데이터 로딩 지연문제는 스켈레톤 UI 도입으로
+                          UX를 향상 시킬 예정입니다.
+                        </li>
+
+                        <li>
+                          [문제] 응답 지연 - 투두리스트를 사용하는 중에 생성,
+                          수정, 삭제에대한 버셀 배포환경의 응답 지연이슈
+                        </li>
+
+                        <li>
+                          [해결] 낙관적 업데이트 도입으로 UX를 향상 시킬
+                          예정입니다.
                         </li>
                       </ul>
                     </div>
@@ -217,30 +224,27 @@ export default function Home() {
                       <li>
                         Next, TS, Lodash, React-Query, SCSS, React Hook Form
                       </li>
-                      <li>
+                      <li className="flex max-md:justify-center items-center gap-4 py-4">
                         <Link
                           href={"https://todayhouse.vercel.app/"}
                           target="_blank"
                         >
-                          https://todayhouse.vercel.app/
+                          <FaLink size={30}></FaLink>
                         </Link>
-                      </li>
-                      <li>
+
                         <Link
                           href={"https://github.com/LogicRefinery/todayhouse"}
                           target="_blank"
                         >
-                          https://github.com/LogicRefinery/todayhouse
+                          <FaSquareGithub size={38}></FaSquareGithub>
                         </Link>
-                      </li>
-                      <li>
                         <Link
                           href={
                             "https://drive.google.com/file/d/1j-LlDiA0Es4ZDJrz7UpzG8cLoTMcAG3j/view"
                           }
                           target="_blank"
                         >
-                          https://drive.google.com/file/d/1j-LlDiA0Es4ZDJrz7UpzG8cLoTMcAG3j/view
+                          <FaFilePdf size={34}></FaFilePdf>
                         </Link>
                       </li>
                     </ul>
@@ -347,20 +351,18 @@ export default function Home() {
                     <ul className="font-thin text-base break-all">
                       <li>2024.02.20. - 2024.02.29 ( 1인 )</li>
                       <li>Next, TS, SCSS</li>
-                      <li>
+                      <li className="flex max-md:justify-center items-center gap-4 py-4">
                         <Link
                           href={"https://th-gallery-rose.vercel.app/"}
                           target="_blank"
                         >
-                          https://th-gallery-rose.vercel.app/
+                          <FaLink size={30}></FaLink>
                         </Link>
-                      </li>
-                      <li>
                         <Link
                           href={"https://github.com/LogicRefinery/THGallery"}
                           target="_blank"
                         >
-                          https://github.com/LogicRefinery/THGallery
+                          <FaSquareGithub size={38}></FaSquareGithub>
                         </Link>
                       </li>
                     </ul>
