@@ -1,6 +1,6 @@
 "use client";
 import sendEmail from "@/actions/send-email";
-import React, { useActionState, useEffect, useState } from "react";
+import React, { useActionState, useEffect } from "react";
 import { ScaleLoader } from "react-spinners";
 
 function EmailForm({ onEmailToggle }: { onEmailToggle: () => void }) {

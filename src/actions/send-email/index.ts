@@ -11,7 +11,10 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-async function sendEmail(prevState: any, formData: FormData) {
+async function sendEmail(
+  prevState: { message: string } | null | undefined,
+  formData: FormData
+) {
   try {
     const { name, email, subject } = Object.fromEntries(formData);
 
