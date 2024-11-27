@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import TopButton from "./components/top-button";
 import { FaFilePdf, FaLink } from "react-icons/fa";
@@ -19,27 +18,18 @@ export default function Home() {
                 <span> ( 중소기업 채용시 1년간 매월 60만원 임금 지원 )</span>
               </p>
             </div>
-            <div className="flex py-10 gap-8 max-lg:flex-col">
-              <div className="flex justify-center basis-1/4">
-                <div className="relative w-full max-lg:w-1/2 aspect-[1] rounded-full overflow-hidden">
-                  <Image
-                    src={"/profile.png"}
-                    alt={"김태형 프로필 사진"}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 25vw"
-                  />
-                </div>
-              </div>
-              <div className="basis-3/4">
+            <div className="py-10 gap-8">
+              <div>
                 <p className="pb-2">
                   그누보드5 & 영카트 / Jquery / MySql 기반의 환경에서 유지보수와
-                  스킨을 개발하며 1년차 프론트엔드 개발을 해왔습니다. 이후
-                  모던한 웹프론트엔드 개발을 시작하기 위해서 지난 14개월동안
-                  치열하게 준비했습니다. ( Git, HTML, Css, Js, React, Redux, Ts,
-                  Next, React-Query, Msw, Next api, Supabase 등 )
+                  스킨을 개발하며 1년차 프론트엔드 개발을 해왔습니다. <br />
+                  이후 모던한 웹프론트엔드 개발을 시작하기 위해서 지난
+                  14개월동안 치열하게 준비했습니다. <br />( Git, HTML, Css, Js,
+                  React, Redux, Ts, Next, React-Query, Msw, Next api, Supabase
+                  등 )
                 </p>
                 <p className="pb-2">
-                  <span className="font-semibold">
+                  <span className="text-sm p-1 mr-1 bg-[#1d1d1f] text-white rounded-sm">
                     unsplash API를 활용한 갤러리 / E-Commerce / 풀스택
                     투두리스트
                   </span>
